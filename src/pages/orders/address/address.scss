@@ -1,0 +1,33 @@
+page-address {
+    ul li {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        padding-left: 0.86rem;
+        padding-right: 0.86rem;
+        span {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            line-height: 2.3rem;
+            color: #333;
+        }
+        span:nth-child(2) {
+            color: #2a2a2a;
+        }
+    }
+    .icon {
+        font-size: 20px;
+        color: #999;
+    }
+    .button {
+        height: 3.21rem;
+        background: #346792;
+        color: #fff;
+        width: 100%;
+        font-family: PingFang-SC-Medium;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+}

@@ -1,0 +1,80 @@
+<!--
+  Generated template for the NewaddPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()"
+        (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="information">
+        <ul>
+            <li>
+                <div class="list">
+                    <span>收货人:</span>
+                    <input type="text" value="{{userInfo.name}}" [(ngModel)]="userInfo.name">
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>联系电话:</span>
+                    <input type="text" value="{{userInfo.phone}}" [(ngModel)]="userInfo.phone">
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>省份:</span>
+                    <ion-select class="select" (ionChange)="change($event,'addProvince')" [(ngModel)]="userP.province">
+                        <ion-option [value]="item.cityId" *ngFor='let item of addProvince'>{{item.cityName}}</ion-option>
+                    </ion-select>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>城市:</span>
+                    <ion-select class="select" (ionChange)="changes($event,'addCity')" [(ngModel)]="userN.city">
+                        <ion-option *ngIf="!userP.province">请选择省份</ion-option>
+                        <ion-option [value]="item.cityId" *ngFor='let item of addCity'>{{item.cityName}}</ion-option>
+                    </ion-select>
+
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>区县:</span>
+                    <ion-select class="select" [(ngModel)]="userQ.district">
+                        <ion-option *ngIf="!userN.city">请选择城市</ion-option>
+                        <ion-option [value]="item.cityId" *ngFor='let item of addArea'>{{item.cityName}}</ion-option>
+                    </ion-select>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>详细地址:</span>
+                    <input type="text" value="{{userInfo.address}}" [(ngModel)]="userInfo.address">
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>邮编:</span>
+                    <input type="text" value="{{userInfo.zipCode}}" [(ngModel)]="userInfo.zipCode">
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>设为默认:</span>
+                    <span>
+            <ion-checkbox color='energized'  [(ngModel)]="abc"  (click)="submits()"></ion-checkbox>
+          </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</ion-content>
+<ion-footer (click)="save()">保存</ion-footer>

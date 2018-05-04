@@ -1,0 +1,85 @@
+<!--
+  Generated template for the ShaixuanPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()"
+        (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+
+<ion-content>
+    <div class="option">
+        <div class="title">
+            固定标签
+        </div>
+        <div>
+            <div class="row">
+                <div class="titles" *ngFor="let item of fixed">
+                    <!-- <p>{{item.tagGroupName}}</p> -->
+                    <div class="content">
+                        <div *ngFor="let i of item.tagList">
+                            <span [ngClass]="{'span':button(i.id),'spans':buttons(i.id)}" class="span" (click)="submit(i.id)">{{i.tagName}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="option" *ngIf="isShow">
+        <div class="title">自定义标签</div>
+        <div class="top">
+            <div class="row">
+                <div class="titles" *ngFor="let item of custom">
+                    <!-- <p>{{item.tagGroupName}}</p> -->
+                    <div class="content">
+                        <div *ngFor="let i of item.tagList">
+                            <span [ngClass]="{'span':button(i.id),'spans':buttons(i.id)}" class="span" (click)="submit(i.id)">{{i.tagName}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="option">
+        <div class="title">购买金额</div>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-5><input type="number" [(ngModel)]="money1" name="money1"></ion-col>
+                <ion-col col-2><i>至</i></ion-col>
+                <ion-col col-5><input type="number" [(ngModel)]="money2" name="money2"></ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="option">
+        <div class="title">最近购买时间</div>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-5>
+                    <ion-datetime class="time-input" style="padding:0" displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" [(ngModel)]="beginTime"
+                    name="beginTime"></ion-datetime>
+                </ion-col>
+                <ion-col col-2><i>至</i></ion-col>
+                <ion-col col-5>
+                    <ion-datetime class="time-input" style="padding:0" displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" [(ngModel)]="endTime"
+                    name="endTime"></ion-datetime>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="option">
+        <div class="title">购买次数</div>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-5><input type="number" [(ngModel)]="listArr.consumeNumStart" name="consumeNumStart"></ion-col>
+                <ion-col col-2><i>至</i></ion-col>
+                <ion-col col-5><input type="number" [(ngModel)]="listArr.consumeNumEnd" name="consumeNumEnd"></ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>
+<ion-footer (click)="next()">
+    筛选客户
+</ion-footer>

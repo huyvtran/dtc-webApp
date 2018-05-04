@@ -1,0 +1,58 @@
+page-delivery {
+    ion-content {
+        .center {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            color: #2A2A2A;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            button {
+                display: inline-block;
+                min-width: 6.5rem;
+                color: white;
+                background: red;
+            }
+            .item-inner {
+                padding-right: 0;
+            }
+            .label-ios {
+                margin: 0;
+            }
+            .list {
+                font-size: 1.2rem;
+                line-height: 3.2rem;
+                span {
+                    color: #333333;
+                }
+                input {
+                    border: 0;
+                    color: #666666;
+                }
+                input:nth-child(2) {
+                    color: #092C74;
+                    width: 40%;
+                }
+                input:nth-child(3) {
+                    float: right;
+                    text-align: right;
+                }
+                .address span {
+                    color: #666666;
+                }
+                .buts {
+                    float: right;
+                    background: rgb(255, 255, 255);
+                    color: #E97213;
+                    border-radius: .5rem;
+                    width: 6.0rem;
+                    height: 2.2rem;
+                    font-size: 1.3rem;
+                }
+                .x {
+                    color: #666666;
+                }
+            }
+        }
+    }
+}

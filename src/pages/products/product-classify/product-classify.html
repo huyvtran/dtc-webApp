@@ -1,0 +1,45 @@
+<!--
+  Generated template for the ProductClassifyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+        <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+
+
+<ion-content class="classify-box">
+<div class="left">
+<ion-segment class="ul">
+    <ion-segment-button class="li" (click)="pop()">
+        全部产品
+    </ion-segment-button>
+    <ion-segment-button class="li" *ngFor="let item of datalist;let i = index" [ngClass]="{'backColor' : folderstatus[i]}" (click)="classifyActiva(i,item)"
+        value={{item.id}}>
+        {{item.categoryName}}
+    </ion-segment-button>
+</ion-segment>
+</div>
+    <div class="right">
+        <ul>
+            <li>
+                <dl *ngFor="let item of dataChild">
+                    <dt>
+                        <div class="title">{{item.categoryName}}</div>
+                        <div class="whole">全部</div>
+                        <div class="whole"></div>
+                        <div class="content">
+                            <span *ngFor="let i of list">
+                                <div class="content-span" *ngIf="item.id == i.categoryTwoId" (click)="ifyList(i.id)">
+                                     {{i.productSimplifyName}}
+                                </div>
+                            </span>
+                        </div>
+                    </dt>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</ion-content>

@@ -1,0 +1,150 @@
+<!--
+  Generated template for the CreateactivityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+        <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+<ion-content>
+    <div>
+        <form class="form-wrap">
+            <div>
+                <div class="create-item">
+                    <label>活动类型
+                        <span class="star">*</span>
+                    </label>
+                    <div class="right-text">
+                        <ion-item>
+                            <ion-label class="opacity">请选择</ion-label>
+                            <ion-select class="select" [(ngModel)]="eventForm.type" name="type" (ionChange)="typeChange()">
+                                <ion-option [value]="1">晚宴</ion-option>
+                                <ion-option [value]="2">沙龙</ion-option>
+                                <ion-option [value]="3">课堂</ion-option>
+                            </ion-select>
+                        </ion-item>
+
+                    </div>
+                </div>
+                <div class="create-item">
+                    <label>活动名称
+                        <span class="star">*</span>
+                    </label>
+                    <div class="right-text">
+                        <input type="text" placeholder="请输入活动名称" [(ngModel)]="eventForm.eventName" name="eventName">
+                    </div>
+                </div>
+                <div class="create-item">
+                    <label>活动时间
+                        <span class="star">*</span>
+                    </label>
+                    <div class="right-text">
+                        <ion-datetime style="padding:0" displayFormat="YYYY-MM-DD HH:mm" min="2000" max="2030-10-31" [(ngModel)]="eventForm.beginTime"
+                            name="beginTime"></ion-datetime>
+                    </div>
+                </div>
+                <div class="create-item" (click)="goMailist()">
+                    <label for="">现场销售</label>
+                    <div class="right-text">
+                        <span>{{eventForm.saleName}}</span>
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </div>
+                </div>
+                <div class="create-item" (click) = "organizerClick()">
+                    <label>组织者
+                        <span class="star">*</span>
+                    </label>
+                    <div class="right-text">
+                        <span>{{eventForm.organizerName}}</span>
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </div>
+                </div>
+                <div class="create-item">
+                    <label>省份
+                        <span class="star">*</span>
+                    </label>
+                    <div class="right-text">
+                        <ion-item>
+                            <ion-label class="opacity">省份</ion-label>
+                            <ion-select class="select" (ionChange)="change($event,'addProvince')" [(ngModel)]="eventForm.provinceId" name="provinceId">
+                                <ion-option [value]="item.cityId" *ngFor='let item of addProvince'>{{item.cityName}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </div>
+                </div>
+                <div class="create-item">
+                    <label>城市
+                        <span class="star">*</span>
+                    </label>
+                    <div class="right-text">
+                            <ion-item >
+                                    <ion-label class="opacity">城市</ion-label>
+                                    
+                        <ion-select class="select" (ionChange)="change($event,'addCity')" [(ngModel)]="eventForm.cityId" name="cityId">
+                                <ion-option *ngIf="!eventForm.provinceId">请选择省份</ion-option>
+                            <ion-option [value]="item.cityId" *ngFor='let item of addCity'>{{item.cityName}}</ion-option>
+                        </ion-select>
+                        </ion-item>
+                    </div>
+                </div>
+                <div class="create-item">
+                    <label>详细地址
+                        <span class="star">*</span>
+                    </label>
+                    <div class="right-text">
+                        <input type="text" placeholder="请填写详细地址" [(ngModel)]="eventForm.detailAddress" name="detailAddress">
+                    </div>
+                </div>
+                <div class="create-item">
+                    <label for="">预估人数
+                        <span class="star">*</span>
+                    </label>
+                    <div class="right-text">
+                        <input type="number" placeholder="请填写预估人数" [(ngModel)]="eventForm.estimatNumber" name="estimatNumber">
+                    </div>
+                </div>
+                <div class="create-item">
+                    <label for="">人均费用
+                        <span class="star">*</span>
+                    </label>
+                    <div class="right-text">
+                        <input type="number" placeholder="请填写人均费用" [(ngModel)]="eventForm.estimateAveragePrice" name="estimateAveragePrice">
+                    </div>
+                </div>
+                <!-- <div class="create-item" (click)="goMailist()">
+                    <label for="" class="train active">培训师</label>
+                    <div class="right-text">
+                        <ion-icon name="arrow-forward"></ion-icon>    
+                    </div>
+                </div> -->
+            </div>
+            <div class="thing-wrap">
+                <div class="thing-title" (click)="getMaterials()">物料清单
+                    <div class="right-text">
+                        <span *ngIf = "eventForm.eventProductList.length==0 || !eventForm.eventProductList">未选择</span>
+                        <span *ngIf = "eventForm.eventProductList && eventForm.eventProductList.length>0">已选择</span>
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="approver" (click)="approveClick()">
+                <label for="" class="train">审批人
+                    <span class="star">*</span>
+                </label>
+                <div class="right-text">
+                    <span>{{eventForm.approverName}}</span>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </div>
+            </div>
+        </form>
+        <div class="btn">
+            <div (click)="draft()">保存草稿</div>
+            <div (click)="sub()">提交申请</div>
+        </div>
+    </div>
+
+
+</ion-content>

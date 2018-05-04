@@ -1,0 +1,26 @@
+
+<ion-content padding>
+  
+    <div>
+      <img class="login-logo" src= {{logo_img_path}} >
+    </div>
+  
+  
+    <p class="title">身份认证</p>
+    <div class="input">
+      <img class="input-icon" src= {{email_img_path}} >
+      <ion-input type="password" placeholder="请输入您的邮箱" #password class="input-psd"></ion-input>
+    </div>
+  
+    <div class="input">
+      <img class="input-icon input-icon1" src= {{code_img_path}} alt="">
+      <ion-input type="password" placeholder="请输入验证码" #password2 class="input-psd"></ion-input>
+      <button class="getyzm">点击获取</button>
+    </div>
+  
+    <a left href="#" (click)="back()">使用手机验证</a>
+  
+    <button ion-button round  (click) = "set()">提&nbsp;&nbsp;&nbsp;交</button>
+  
+  </ion-content>
+  

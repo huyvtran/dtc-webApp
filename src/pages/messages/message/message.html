@@ -1,0 +1,70 @@
+<!--
+  Generated template for the QrCodePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <my-nav [title]="title" [type]="'message'" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()"
+        (chatbubblesClick)="chatbubbles()"></my-nav>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item  (click)="getNews(0)">
+            <div class="news-logo">
+                <img src="assets/icon/1.png">
+                <div class="red-circle" *ngIf='!orderNew.isRead'></div>
+            </div>
+            <div class="news">
+                <p>订单中心</p>
+                <p>{{orderNew.message}}</p>
+            </div>
+            <div class="new-time">{{orderNew.createTime | date:'HH:mm'}}</div>
+        </ion-item>
+        <ion-item  (click)="getNews(1)">
+            <div class="news-logo">
+                <img src="assets/icon/1.png">
+                <div class="red-circle" *ngIf='!activiNew.isRead'></div>
+            </div>
+            <div class="news">
+                <p>活动中心</p>
+                <p>{{activiNew.message}}</p>
+            </div>
+            <div class="new-time">{{activiNew.createTime | date:'HH:mm'}}</div>
+        </ion-item>
+        <ion-item  (click)="getNews(2)">
+            <div class="news-logo">
+                <img src="assets/icon/1.png">
+                <div class="red-circle" *ngIf='!productNew.isRead'></div>
+            </div>
+            <div class="news">
+                <p>产品中心</p>
+                <p>{{productNew.message}}</p>
+            </div>
+            <div class="new-time">{{productNew.createTime | date:'HH:mm'}}</div>
+        </ion-item>
+        <ion-item  (click)="getNews(3)">
+            <div class="news-logo">
+                <img src="assets/icon/1.png">
+                <div class="red-circle" *ngIf='!customerNew.isRead'></div>
+            </div>
+            <div class="news">
+                <p>客户管理</p>
+                <p>{{customerNew.message}}</p>
+            </div>
+            <div class="new-time">{{customerNew.createTime | date:'HH:mm'}}</div>
+        </ion-item>
+        <ion-item  (click)="getNews(4)">
+            <div class="news-logo">
+                <img src="assets/icon/1.png">
+                <div class="red-circle" *ngIf='!brandsNew.isRead'></div>
+            </div>
+            <div class="news">
+                <p>品牌中心</p>
+                <p>{{brandsNew.message}}</p>
+            </div>
+            <div class="new-time">{{brandsNew.createTime | date:'HH:mm'}}</div>
+        </ion-item>
+    </ion-list>
+</ion-content>

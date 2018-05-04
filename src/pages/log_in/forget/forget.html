@@ -1,0 +1,28 @@
+
+
+  <ion-content padding>
+   <div>
+      <img class="login-logo" src={{logo_img_path}}>
+    </div>
+
+    <p class="cus-title">忘记密码</p>
+    <div class="input">
+      <img class="input-icon" src={{name_img_path}} >
+      <ion-input type="tel" placeholder="请填写手机号" class="input-psd" [(ngModel)] = "userInfo.username"></ion-input>
+    </div>
+  
+    <div class="input">
+      <img class="input-icon input-icon1" src={{code_img_path}} >
+      <ion-input type="text" placeholder="请填写验证码"  class="input-psd" [(ngModel)] = "userInfo.yzm"></ion-input>
+      <button class="getyzm" (click)="getYZM()">点击获取</button>
+    </div>
+
+
+    <button ion-button round (click)="jump()">提&nbsp;&nbsp;&nbsp;交</button>
+
+    <div style="margin-top:10px;padding-right:40px;text-align:right">
+         <a  style="color:white" (click) = "back()" > 返回> </a>
+    </div>
+
+  
+  </ion-content>

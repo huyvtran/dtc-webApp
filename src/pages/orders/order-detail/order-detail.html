@@ -1,0 +1,180 @@
+<ion-header>
+        <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+</ion-header>
+
+
+<ion-content>
+    <!-- 物流信息 -->
+    <div class="logistics">
+        <dl *ngFor="let item of logistics"  (click)="toLogistics(item.id)">
+            <dt><img src="assets/product/product1.png" alt=""></dt>
+            <dd  >
+                <div class="line1">
+                    <div class="left">
+                        <span>物流公司</span>
+                        <span class="time">{{item.companyName}}</span>
+                    </div>
+                    <div class="right"  *ngIf="item.logisticsStatus == 1">
+                        <span class="state">待发货</span>
+                        <img src="../../../assets/icon/logistics.png" alt="">
+                    </div>
+                    <div class="right" *ngIf="item.logisticsStatus == 2">
+                        <span class="state">已发货</span>
+                        <img src="../../../assets/icon/logistics.png" alt="">
+                    </div>
+                    <div class="right" *ngIf="item.logisticsStatus == 3">
+                        <span class="state">已到货</span>
+                        <img src="../../../assets/icon/logistics.png" alt="">
+                    </div>
+                </div>
+                <div class="line1">
+                    <span class="time" style="font-size:12px;color:#666">{{item.logisticsNumber}}</span>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <!-- 收货信息 -->
+    <div class="receiving"  *ngIf="goods">
+        <img src="assets/icon/coordinate.png" alt="">
+        <div>
+            <p class="line1">
+                <span class="left">收货人：<span class="receiving-person">{{orderAddress.name}}</span></span>
+                <span class="phoneNuber">{{orderAddress.tel}}</span>
+            </p>
+            <p class="line2">收货地址：<span class="address">{{orderAddress.province}}{{orderAddress.city}}{{orderAddress.area}}{{orderAddress.detail}}</span></p>
+        </div>
+    </div>
+    <!-- 下单信息 -->
+    <div class="order">
+        <p><span>下单客户:</span><span>{{orderInfo.buyerName}}</span></p>
+        <p><span>订单编号:</span><span>{{orderInfo.orderNum}}</span></p>
+        <p><span>手机号:</span><span>{{orderInfo.buyerPhone}}</span></p>
+        <p><span>所属销售:</span><span>{{orderInfo.salesName}}</span></p>
+    </div>
+    <!-- 商品信息 -->
+    <div class="product">
+        <ul>
+            <li *ngFor = "let item of productList">
+                <dl>
+                    <dt><img src={{item.productImage}}></dt>
+                    <dd>
+                        <p><span class="title">{{item.productName}}</span><span class="price">¥{{item.discountPrice /100}}</span></p>
+                        <p><span class="model">{{item.sku}}</span><span class="price hg">¥{{item.productMemberPrice /100}}</span></p>
+                        <p><span class="model"></span><span class="num">x{{item.productNum}}</span></p>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+        <div class="product-count">
+            共<span>{{orderInfo.productCounts}}</span>件商品 合计:
+            <span>¥{{orderInfo.orderMoney/100}}</span> 
+            优惠价:
+            <span class="discount">¥{{orderInfo.discountAmount/100}}</span>
+        </div>
+    </div>
+    <!-- 礼品信息 -->
+    <div class="gift" *ngIf = "giftList.length > 0">
+        <div class="line1">
+            <span class="gift-msg">礼品信息</span>
+        </div>
+        <ul *ngFor = "let item of giftList">
+            <li>
+                <dl>
+                    <dt><img src={{item.productImage}}></dt>
+                    <dd>
+                        <p><span class="title">{{item.productName}}</span><span class="price">¥{{item.productMemberPrice /100}}</span></p>
+                        <p><span class="model">{{item.sku}}</span><span class="num">x{{item.productNum}}</span></p>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+    <!-- 备注信息 -->
+    <div class="note" *ngIf="notes">
+        备注：<span class="content">{{orderInfo.remark}}</span>
+    </div>
+    <!-- 发票信息 -->
+    <div class="invoices"  *ngIf="hw">
+        <p>发票抬头: <span>{{orderInvoice.title}}</span></p>
+        <p>公司税务号: <span>{{orderInvoice.dutyNumber}}</span></p>
+        <p>银行账号: <span>{{orderInvoice.accountNumber}}</span></p>
+        <p>公司联系方式: <span>{{orderInvoice.phone}}</span></p>
+    </div>
+    <div class="invoice"  *ngIf="hn">
+        <p>发票抬头:
+            <span>{{orderInvoice.title}}</span>
+        </p>
+        <p>公司税务号:
+            <span>{{orderInvoice.dutyNumber}}</span>
+        </p>
+        <p>银行账号:
+            <span>{{orderInvoice.accountNumber}}</span>
+        </p>
+        <p>公司联系方式:
+            <span>{{orderInvoice.phone}}</span>
+        </p>
+    </div>
+    <!-- 付款 -->
+    <div class="payment" (click)="toPaymentVoucher()" *ngIf = "orderInfo.status == 1 && (orderInfo.preparePay == 1 || orderInfo.preparePay == 2 || orderInfo.preparePay == 3)">
+        <div class="left">
+            <img src="assets/icon/upload.png" alt="">
+            <span>付款凭证</span>
+        </div>
+        <span class="right">未上传</span>
+    </div>
+  
+    <!-- 显示条件: 待支付状态 微信 支付宝 -->
+    <div class="payment lefts" (click)="toCodes()" *ngIf = "orderInfo.status == 1 && (orderInfo.preparePay == 5 || orderInfo.preparePay == 6)">
+        <div class="left">
+            <img src="assets/icon/payment-code.png" alt="">
+            <span>付款码</span>
+        </div>
+        <span class="right" style="margin-right:15px;"><ion-icon class="gt" name="ios-arrow-forward"></ion-icon></span>
+    </div>
+   
+</ion-content>
+<ion-footer *ngIf="orderInfo.status == 7 && orderInfo.channel ==3" (click) = "confirmGoods()">确认收货</ion-footer>
+<ion-footer *ngIf="orderInfo.status == 13 && orderInfo.channel ==3" (click)="cancelOrder()">取消订单</ion-footer>
+<ion-footer *ngIf="orderInfo.status == 8 && orderInfo.channel ==3" (click)="returnOrder()">退货</ion-footer>
+<ion-footer *ngIf="orderInfo.status == 15 && orderInfo.channel ==3" (click)="logisticsOrder()">完善退货信息</ion-footer>
+
+<!-- 小秦需完成 -->
+
+<!-- 1.dtc head 审批 -->
+<ion-footer *ngIf="roleName == 'DTC Head' && orderInfo.channel ==3 && orderInfo.status == 10 && isReject && rolId == rolHeadId">
+    <div class="foot-btn" (click)="approval()">审批通过</div>
+    <div (click)="reject()">驳回订单</div>
+</ion-footer>
+
+<!-- 2.MD 审批 -->
+<ion-footer *ngIf="roleName == 'Manager Director' && orderInfo.channel ==3 && orderInfo.status == 11 && isReject && rolId == rolMdId">
+    <div class="foot-btn" (click)="approval()">审批通过</div>
+    <div (click)="reject()">驳回订单</div>
+</ion-footer>
+
+<!-- 退款 -->
+<ion-footer *ngIf="roleName == 'DTC Head' && orderInfo.channel ==3 && orderInfo.status == 14 && isReject && rolId == rolHeadId">
+    <div class="foot-btn" (click)="apprefund()">退货通过</div>
+    <div (click)="refund()">驳回退货</div>
+</ion-footer>
+
+<!-- 支付前取消订单 -->
+<ion-footer *ngIf="roleName == 'DTC Sales' && orderInfo.channel ==3 && orderInfo.status == 1" (click)="cancelOrder()">取消订单</ion-footer>
+<!-- 驳回 -->
+<div class="reject-wrap" *ngIf="isRejectShow" id="height">
+    <div class="reject-w">
+        <div><ion-icon ios="ios-close" md="md-close" (click)="close()"></ion-icon></div>
+        <div><textarea name=""  cols="30" rows="10" placeholder="请输入驳回理由"   [(ngModel)]="overruleReason"></textarea></div>
+        <div (click)="submitReject()">确定</div>
+    </div>
+</div>
+<!-- 退货 -->
+<div class="reject-wrap" *ngIf="isRefundShow" id="height">
+    <div class="reject-w">
+        <div><ion-icon ios="ios-close" md="md-close" (click)="close()"></ion-icon></div>
+        <div><textarea name="" cols="30" rows="10" placeholder="请输入退货理由" [(ngModel)]="overruleReasoninfo"></textarea></div>
+        <div (click)="submitRefund()">确定</div>
+    </div>
+</div>
+
+

@@ -1,0 +1,124 @@
+page-createactivity {
+    .page {
+        background: #f4f4f4;
+        font-size: 1.2rem;
+        color: #333;
+    }
+    .form-wrap>div {
+        background: #fff;
+        padding: 0px 10px 0;
+    }
+    .select {
+        position: relative;
+        float: right;
+        padding: 0px 8px 0px 16px;
+    }
+    .select-text {
+        white-space: nowrap;
+        overflow: visible;
+    }
+    ion-select {
+        max-width: 80%;
+    }
+    .create-item {
+        width: 100%;
+        line-height: 1.4rem;
+        padding: 9px 5px;
+        border-bottom: 0.5px solid #eee;
+        overflow: hidden;
+        .right-text {
+            position: relative;
+            float: right;
+            width: 60%;
+            text-align: right;
+            height:1.6rem;
+            .opacity {
+                opacity: 0;
+            }
+            input {
+                border: 0;
+                text-align: right;
+                color: #666;
+            }
+        }
+    }
+    .right-text {
+        float: right;
+        .icon {
+            font-size: 1.2rem;
+        }
+    }
+    .form-wrap>div>.create-item:last-child {
+        border: 0;
+    }
+    .train.active {
+        color: #999;
+    }
+    .form-wrap .thing-wrap {
+        margin-top: 5px;
+        padding: 0 10px;
+        padding-bottom: 9.2px; // border-bottom: 0.5px solid #eee;
+    }
+    .thing-wrap>div {
+        padding: 15px 5px;
+        overflow: hidden;
+        span {
+            line-height: 1.4px;
+        }
+        .number {
+            float: right;
+        }
+    }
+    .thing-wrap .thing-title {
+        padding: 15px 5px;
+        line-height: 20px;
+        border-bottom: 0.5px solid #eee;
+        font-size: 1.4rem;
+    }
+    .form-wrap .approver {
+        padding: 7px 15px 7rem;
+    }
+    .btn {
+        width: 100%;
+        height: 4.5rem;
+        line-height: 4.5rem;
+        color: #fff;
+        font-size: 1.4rem;
+        text-align: center;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        div {
+            float: left;
+            background: #346792;
+            width: 50%;
+        }
+    }
+    .btn>div:nth-child(1) {
+        border-right: 1px solid #fff;
+    }
+    .btn>div:nth-child(2) {
+        border-left: 1px solid #fff;
+    }
+    .star {
+        color: red;
+    }
+    .item.item-block .item-inner {
+        border-bottom: 0;
+    }
+    .item-block {
+        min-height: 0;
+    }
+    .label-ios {
+        margin: 0;
+    }
+    .item-select {
+        font-size: 1.3rem
+    }
+    .input-wrapper {
+        margin-right: -10px;
+    }
+    .input-wrapper{
+        height:2rem;
+    }
+}

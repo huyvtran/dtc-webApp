@@ -1,0 +1,46 @@
+<!--
+  Generated template for the MaterialListsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>物料清单</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list class="mid">
+		<ion-item-sliding  *ngFor="let item of dataList; let i = index">
+			<ion-item>
+				<div class="material-name">
+					<div class="second-p">{{item.productName}}</div>
+				</div>
+				<div class="material-quailty">
+					<!-- <div>
+						<span (click)="edit(i)" *ngIf="!item.edit">编辑</span>
+						<span (click)="complete(i)" *ngIf="item.edit">完成</span>
+					</div> -->
+					<div  class="second-p" *ngIf="!item.edit">
+						<span>数量：</span>
+						<span>{{item.productNum}}</span>
+						<!-- <input class="number" type="text"  readonly> -->
+					</div>
+					<div class="second-p" *ngIf="item.edit">
+						<ion-icon ios="ios-remove-circle" md="md-remove-circle" (click)="remove(i)"></ion-icon>
+						<input class="edit-number" type="number" [(ngModel)]="item.productNum">
+						<ion-icon ios="ios-add-circle" md="md-add-circle" (click)="add(i)"></ion-icon>
+					</div>
+				</div>
+			</ion-item>
+			<ion-item-options>
+				<!-- <button class="seleteButton" danger (click)="delete(i)">删除</button> -->
+			</ion-item-options>
+		</ion-item-sliding>
+
+	</ion-list>
+</ion-content>

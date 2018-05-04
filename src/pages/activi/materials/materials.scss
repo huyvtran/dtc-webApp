@@ -1,0 +1,85 @@
+page-materials {
+    .page {
+        background: #f4f4f4;
+        font-size: 1.2rem;
+        color: #333;
+    }
+    .material-wrap {
+        overflow: hidden;
+        background: #fff;
+        .material-name {
+            float: left;
+            width: 70%;
+            .second-p {
+                margin-top: 10px;
+            }
+        }
+        .material-quailty {
+            float: left;
+            width: 25%;
+            color: #346792;
+            .second-p {
+                margin-top: 10px;
+            }
+            .number {
+                border: 0;
+            }
+            input {
+                width: 45px;
+            }
+            .icon {
+                font-size: 1.7rem;
+            }
+        }
+    }
+    .btn {
+        width: 100%;
+        height: 4.5rem;
+        line-height: 4.5rem;
+        color: #fff;
+        font-size: 1.4rem;
+        text-align: center;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        div {
+            float: left;
+            background: #346792;
+            width: 50%;
+        }
+    }
+    .btn>div:nth-child(1) {
+        border-right: 1px solid #fff;
+    }
+    .btn>div:nth-child(2) {
+        border-left: 1px solid #fff;
+    }
+    .edit-number {
+        text-align: center;
+        width: 45px;
+    }
+    .seleteButton {
+        width: 6.5rem;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        background: red;
+    }
+    .material-name {
+        white-space: normal;
+        float: left;
+        width: 65%;
+    }
+    .material-quailty {
+        color: #346792;
+        float: right;
+        width: 30%;
+    }
+    .second-p {
+        margin-top: 10px;
+        font-size: 1.4rem;
+    }
+}

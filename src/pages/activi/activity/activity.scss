@@ -1,0 +1,105 @@
+page-activity {
+    .page {
+        background: #f4f4f4;
+        color: #333;
+        font-size: 1.2rem;
+    }
+    .create-wrap {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 15px 0 20px;
+        background: #fff;
+        border-bottom: 0.5px solid #f4f4f4;
+    }
+    .create-a img {
+        float: left;
+        width: 18px;
+        height: 22px;
+        margin: 8px 10px 0 0;
+    }
+    .create-a {
+        overflow: hidden;
+        vertical-align: middle;
+        div {
+            float: left;
+            font-size: 1.3rem;
+            letter-spacing: -0.31px;
+        }
+        i {
+            float: right;
+        }
+    }
+    ul li {
+        width: 100%;
+        list-style: none;
+    }
+    .tab-wrap {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 0.5px solid #f4f4f4;
+        background: #fff;
+        font-size: 1.3rem;
+        color: #2a2a2a;
+        .segment-button {
+            height: 3.2rem;
+            line-height: 3.2rem;
+        }
+        ul {
+            display: flex;
+            li {
+                flex: 1;
+                text-align: center;
+            }
+            li.active {
+                color: #092C74;
+                position: relative;
+                font-weight: bold;
+            }
+            .active:after {
+                content: "";
+                position: absolute;
+                bottom: 2px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 20px;
+                height: 3px;
+                border-radius: 100px;
+                background: #00448B;
+            }
+        }
+    }
+    .activity-content {
+        ul {
+            li {
+                padding: 5px 15px;
+                background: #fff;
+                border-bottom: 0.5px solid #f4f4f4;
+            }
+        }
+    }
+    .activity-list {
+        overflow: hidden;
+        span {
+            float: left;
+            line-height: 32px;
+        }
+        span:nth-child(2) {
+            margin-left: 5px;
+            color: #2A2A2A;
+        }
+        span.b-color {
+            color: #092C74;
+        }
+        .activity-state {
+            color: #092C74;
+            font-size: 13px;
+            float: right;
+            font-weight: bold;
+        }
+    }
+    .creat-icon {
+        float: right;
+    }
+}

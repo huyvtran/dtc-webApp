@@ -1,0 +1,127 @@
+<!--
+  Generated template for the InvoiceStatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+<ion-content>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="gender">
+      <div class="box">
+        <ion-segment-button value="gonsifapiao" (ionSelect)="hide()">
+        </ion-segment-button>
+        <span>公司发票</span>
+      </div>
+      <div class="box">
+        <ion-segment-button value="gerenfapiao" (ionSelect)="hides()"></ion-segment-button>
+        <span>个人发票</span>
+      </div>
+    </ion-segment>
+  </ion-toolbar>
+  <div class="gent" [ngSwitch]="gender">
+    <ul *ngSwitchCase="'gonsifapiao'">
+      <li>
+        <div class="list">
+          <span>公司名称
+            <span class="star"> * </span>
+          </span>:
+          <input type="text" value="上海新信网络科技有限公司" [(ngModel)]="userInfo.companyName">
+        </div>
+      </li>
+      <li>
+        <div class="list">
+          <span>联系方式:</span>
+          <ion-item class="list">
+            <ion-label class="opacity">请选择</ion-label>
+            <ion-select [(ngModel)]="value">
+              <ion-option [value]="1">移动电话</ion-option>
+              <ion-option [value]="2">固定电话</ion-option>
+            </ion-select>
+          </ion-item>
+        </div>
+      </li>
+      <li>
+        <div class="list">
+          <span>联系电话:</span>
+          <input type="tel" value="0221-15679299" [(ngModel)]="userInfo.phone">
+        </div>
+      </li>
+      <li>
+        <div class="list">
+          <span>税号
+            <span class="star"> * </span>
+          </span>:
+          <input type="text" value="9648484534" [(ngModel)]="userInfo.taxNumber">
+        </div>
+      </li>
+      <li>
+        <div class="list">
+          <span>开户行:</span>
+          <input type="text" value="中国银行" [(ngModel)]="userInfo.bankName">
+        </div>
+      </li>
+      <li>
+        <div class="list">
+          <span>账号:</span>
+          <input type="text" value="0221152545679299" [(ngModel)]="userInfo.bankAccount">
+        </div>
+      </li>
+      <li>
+        <div class="list">
+          <span>设为默认:</span>
+          <span>
+            <ion-checkbox [(ngModel)]="abc" (click)="button()"></ion-checkbox>
+          </span>
+        </div>
+      </li>
+      <li class="last">
+        <div class="list">
+          <div class="title">营业执照</div>
+          <div class="img">
+            <div class="header-image" *ngFor="let item of userInfo.urlList">
+              <div class="delete" (click)="delete(item)"> + </div>
+              <img src="{{item}}" style="display:inline-block;width:100%;height:100%">
+            </div>
+            <div class="header-image" (click)="presentActionSheet()">+</div>
+          </div>
+        </div>
+      </li>
+
+      <div class="new">
+        <p>
+          <span class="star">*</span>&nbsp;&nbsp;若需要公司普通增值税发票的，请填写公司名和税号，
+          <br>若需要公司专用增值税发票则需填写完公司发票完整信息。</p>
+      </div>
+    </ul>
+
+
+
+
+
+    <ul *ngSwitchCase="'gerenfapiao'">
+      <li>
+        <div class="list">
+          <span>发票抬头
+            <span class="star"> * </span>:</span>
+          <input type="text" value="上海新信网络科技有限公司" [(ngModel)]="userInfo.companyName">
+        </div>
+      </li>
+      <li>
+        <div class="list">
+          <span>设为默认:</span>
+          <span>
+            <ion-checkbox [(ngModel)]="abc" (click)="button()"></ion-checkbox>
+          </span>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+
+</ion-content>
+<ion-footer (click)="addInvoice()">保存</ion-footer>

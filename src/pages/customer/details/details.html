@@ -1,0 +1,248 @@
+<!--
+  Generated template for the DetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()"
+        (chatbubblesClick)="chatbubbles()"></my-nav>
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <ion-item class="list-item">
+            <div class="list-left">
+                <img src={{details.headImage}}  *ngIf="details.headImage">
+                <img src={{Head_img}}  *ngIf="!details.headImage">
+            </div>
+            <div class="list-content">
+                <div class="list-content-name">
+                    {{details.username}}
+                </div>
+                <div class="list-content-phone">
+                    {{details.globalRoaming}} {{ details.tel}}
+                </div>
+            </div>
+            <div class="edit" (click)="ionedit()" *ngIf="show">
+                编辑
+            </div>
+        </ion-item>
+    </ion-list>
+    <div class="information">
+        <div class="title-main">
+            <img src={{Jiben_img}} alt=""> 基本信息
+        </div>
+        <ul>
+            <li>
+                <div class="list">
+                    <span>性别:</span>
+                    <span>{{userInfo.gender}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>微信昵称:</span>
+                    <span>{{details.wxNickname}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>年龄:</span>
+                    <span>{{details.ageRange}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>类型:</span>
+                    <span>{{memberTypeCardName}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>组织者层级:</span>
+                    <span>{{userInfo.tier}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>省份:</span>
+                    <span>{{details.provinceName}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>城市:</span>
+                    <span>{{details.cityName}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>来源:</span>
+                    <span>{{details.sourceName}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>备注:</span>
+                    <span>{{details.remarks}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list-appraise">
+                    <span>客户标签:</span>
+                    <span class="appraise" *ngFor="let item of label">{{item.tagName}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list" (click)="ionshow()" id="more">
+                    <a class="list-a">更多</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="information" style="display:none" id="other">
+        <div class="title-main">
+            <img src={{Qita_img}} alt=""> 其他信息
+        </div>
+        <ul>
+            <li>
+                <div class="list">
+                    <span>邮箱:</span>
+                    <span>{{details.email}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>备用手机1:</span>
+                    <span>{{details.spareTelFirst}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>备用手机2:</span>
+                    <span>{{details.spareTelSecond}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>备用手机3:</span>
+                    <span>{{details.spareTelThird}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>爱好:</span>
+                    <span *ngFor="let item of memberJoin">{{item.tagName + '   '}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>生日:</span>
+                    <span>{{details.birthday}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>行业:</span>
+                    <span *ngFor="let item of industry">{{item.tagName + " "}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>职位:</span>
+                    <span>{{details.post}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>公司:</span>
+                    <span>{{details.corporation}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>酒类偏好:</span>
+                    <span *ngFor="let item of preference">{{item.tagName + " "}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>主要购酒目的:</span>
+                    <span *ngFor="let item of memberobjective">{{item.tagName + "    "}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="list">
+                    <span>饮酒频率:</span>
+                    <span>{{userInfo.drinkFrequency}}</span>
+                </div>
+            </li>
+
+            <li>
+                <div class="list">
+                    <span>日常购酒渠道:</span>
+                    <span *ngFor="let item of ofchannel">{{item.tagName + " "}}</span>
+                </div>
+            </li>
+
+            <li>
+                <div class="list">
+                    <a class="list-a" (click)="getCruve()">查看消费趋势</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-3>
+                <span>总购买金额</span>
+                <span *ngIf="details.totalConsumeAccount">{{details.totalConsumeAccount/100}}</span>
+                <span *ngIf="!details.totalConsumeAccount">0</span>
+            </ion-col>
+            <ion-col col-3>
+                <span>最近购买时间</span>
+                <span *ngIf="details.lastBuyTime">{{lastTime}}</span>
+                <span *ngIf="!details.lastBuyTime">--</span>
+            </ion-col>
+            <ion-col col-3>
+                <span>购买次数</span>
+                <span *ngIf="details.consumeNum">{{details.consumeNum}}</span>
+                <span *ngIf="!details.consumeNum">0</span>
+            </ion-col>
+            <ion-col col-3>
+                <span>创建时间</span>
+                <span *ngIf="details.createTime">{{createTime}}</span>
+                <span *ngIf="!details.createTime">--</span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-list>
+        <button ion-item (click)="delivery()" *ngIf="isDe">
+              <img src={{Shouhuo_img}}>
+             收货信息
+            </button>
+        <button ion-item (click)="ionInvoice()" *ngIf="isIon">
+              <img src={{Fapiao_img}}>
+              发票信息
+            </button>
+        <button ion-item (click)="history()">
+              <img src={{Goumai_img}}>
+              购买记录
+            </button>
+        <button ion-item (click)="test()" *ngIf="z">
+              <img src={{Tixing_img}}>
+              提醒设置
+        </button>
+        <button ion-item (click)="tests()" *ngIf="x">
+                <img src={{Tixing_img}}> 提醒设置
+        </button>
+    </ion-list>
+</ion-content>
+<ion-footer (click)="shopping()"  *ngIf="z">
+    快速下单
+</ion-footer>
+<ion-footer  (click)="shoppings()"  *ngIf="x">
+    快速下单
+</ion-footer>

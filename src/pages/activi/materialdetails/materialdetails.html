@@ -1,0 +1,38 @@
+<!--
+  Generated template for the MaterialdetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="products-box">
+    <ion-slides pager>
+      <ion-slide *ngFor='let item of merImage'>
+        <img class="roasting" [src]="item.url" alt="">
+      </ion-slide>
+    </ion-slides>
+    <div class="mid">
+      <p class="title">{{merchand.productSimplifyName}}</p>
+      <p class="last-line">直销价：
+        <span class="price">¥{{price}}</span>
+        <span class="rest"> (
+          <i class="num">{{merchand.publicStoreStock}}</i>件库存)</span>
+      </p>
+    </div>
+    <dl class="btm">
+      <dt>商品信息</dt>
+      <dd>
+        <ul>
+          <li [innerHTML]="merchand.detail"></li>
+          <li [innerHTML]="merchand.productDetail"></li>
+        </ul>
+      </dd>
+    </dl>
+  </div>
+</ion-content>

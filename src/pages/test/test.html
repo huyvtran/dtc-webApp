@@ -1,0 +1,105 @@
+<!--
+  Generated template for the TestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+        <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+</ion-header>
+
+<ion-content>
+    <div class="date-picker">
+        <div class="calendar-container">
+            <ion-grid>
+                <ion-row class="calendar-controls">
+
+                    <ion-col text-center class="selectedDateLabel" col-9>
+                        <span class="selectedMonthLabel">{{ currentDate | date:' M ' }}月 <i>{{ currentDate | date:' y' }}</i></span>
+                    </ion-col>
+                    <ion-col text-left col-2>
+                        <button ion-button icon-only clear (click)="previousMonth()">
+                        <ion-icon name="arrow-back"></ion-icon>
+                    </button>
+                    </ion-col>
+                    <ion-col text-right col-1>
+                        <button ion-button icon-only clear (click)="nextMonth()">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </button>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="calendar-weekDays">
+                    <ion-col text-center class="calendar-week-day">
+                        {{ weekDays[0] }}
+                    </ion-col>
+                    <ion-col text-center class="calendar-week-day">
+                        {{ weekDays[1] }}
+                    </ion-col>
+                    <ion-col text-center class="calendar-week-day">
+                        {{ weekDays[2] }}
+                    </ion-col>
+                    <ion-col text-center class="calendar-week-day">
+                        {{ weekDays[3] }}
+                    </ion-col>
+                    <ion-col text-center class="calendar-week-day">
+                        {{ weekDays[4] }}
+                    </ion-col>
+                    <ion-col text-center class="calendar-week-day">
+                        {{ weekDays[5] }}
+                    </ion-col>
+                    <ion-col text-center class="calendar-week-day">
+                        {{ weekDays[6] }}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+            <ion-grid (swipeleft)="useSwipe && nextMonth()" (swiperight)="useSwipe && previousMonth()">
+
+                <ion-row *ngFor="let row of rows" class="calendar-row">
+
+                    <ion-col *ngFor="let day of row; let i = index" text-center class="calendar-col">
+
+                        <button no-padding block class="calendar-day" *ngIf="day" ion-button clear (click)="dateClicked(day)" (click)="setTodayClass()" (click)="setSelectedClass()" id="calendar-day-{{day}}" [disabled]="pastDates.indexOf(day) > -1 || weekDaysToDisable.indexOf(i) > -1 || daysToDisable.indexOf(day) > -1">
+                        {{ day }}
+                    </button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+    <ion-list>
+        <ion-item-sliding *ngFor="let item of listMessage">
+            <ion-item>
+                <span (click)="update(item.id)">客户：{{item.memberNames}}</span>
+                <span (click)="update(item.id)">时间：{{item.noticeTime}}</span>
+                <span (click)="update(item.id)">事件：<i>{{item.noticeEvent}}</i></span>
+                <span *ngIf="item.followRecord">跟进记录：<i>{{item.followRecord}}</i></span>
+
+                <div (click)="ClassIds(item)" [id]="item.id">
+                    <em>
+                        <img src="{{item.Url}}">
+                    </em>
+                    <i>{{item.genjin}}</i>
+                </div>
+            </ion-item>
+            <ion-item-options>
+                <button danger (click)="delete(item)">删除</button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>
+ <div [ngClass]="{er:contentEr}" style="display:none;">
+
+    <div class="kong" (click)="erClass()"></div>
+
+    <div class="record" id="height">
+         <textarea placeholder="请填写跟进记录" [(ngModel)]="textVal">
+           
+        </textarea> 
+    
+         <div (click)="erRead()" class="button">确定</div> 
+    </div>
+</div> 
+<ion-footer (click)="ionReminder()" [ngClass]='{footer:show}'>
+    创建提醒
+</ion-footer>

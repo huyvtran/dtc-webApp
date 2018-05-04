@@ -1,0 +1,287 @@
+<ion-header>
+        <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+
+<div class="mask" *ngIf="isHide">
+    <div class="content">
+        <div class="payment  lefts" (click)="payment('微信支付')">
+            <div class="left">
+                <span>微信支付</span>
+            </div>
+            <span class="right">
+               <input type="radio" name="radio">
+            </span>
+        </div>
+        <div class="payment  lefts" (click)="payment('支付宝支付')">
+            <div class="left">
+                <span>支付宝支付</span>
+            </div>
+            <span class="right">
+                <input type="radio" name="radio">
+            </span>
+        </div>
+        <div class="payment  lefts" (click)="payment('现金支付')">
+            <div class="left">
+                <span>现金支付</span>
+            </div>
+            <span class="right">
+                <input type="radio" name="radio">
+            </span>
+        </div>
+        <div class="payment  lefts" (click)="payment('POS机支付')">
+            <div class="left">
+                <span>POS机支付</span>
+            </div>
+            <span class="right">
+                <input type="radio" name="radio">
+            </span>
+        </div>
+        <div class="payment  lefts" (click)="payment('银行转账')">
+            <div class="left">
+                <span>银行转账</span>
+            </div>
+            <span class="right">
+                <input type="radio" name="radio">
+            </span>
+        </div>
+        <button type="" class="button" (click)="return()">
+                确定
+      </button>
+    </div>
+
+</div>
+
+<ion-content>
+
+    <!-- <div class="logistics">
+        <dl>
+            <dd>
+                <div class="line1">
+                    <div class="left">
+                        当前交易
+                    </div>
+                    <div class="right">
+                        <img src="assets/icon/logistics.png" alt="">
+                    </div>
+                </div>
+            </dd>
+        </dl>
+    </div> -->
+
+    <div class="receiving" (click)="getAddress()">
+        <img src="assets/icon/coordinate.png" alt="">
+        <div>
+            <p class="line1" >
+                <span class="left">收货人：
+                    <span class="receiving-person"  *ngFor="let item of address">{{item.name}}</span>
+                </span>
+                <span class="left" style="margin-left:8rem">
+                    <span class="phoneNuber"  *ngFor="let item of address">{{item.phone}}</span>
+                </span>    
+                <ion-icon class="gt t" name="ios-arrow-forward"></ion-icon>
+            </p>
+            <p class="line2">收货地址：
+                <span class="address"  *ngFor="let item of address">{{item.provinceName}}{{item.cityName}}{{item.districtName}}{{item.address}}</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="order">
+        <p>
+            <span>下单客户：</span>
+            <span>{{buyerName}}</span>
+        </p>
+        <p>
+            <span>手机号：</span>
+            <span>{{buyerPhone}}</span>
+        </p>
+    </div>
+    <div class="order orders" *ngIf="nHide" (click)="bianji()">
+        <p>
+            <span></span>
+            <span>编辑</span>
+        </p>
+    </div>
+    <div class="order orders" *ngIf="nShow" (click)="update()">
+        <p>
+            <span></span>
+            <span>完成</span>
+        </p>
+    </div>
+    <div class="product">
+        <ul>
+            <li *ngFor="let item of shopping">
+                <dl>
+                    <dt>
+                        <img src="{{item.url}}" alt="">
+                    </dt>
+                    <dd>
+                        <p>
+                            <span class="title" style="width:80%;">{{item.productName}}</span>
+                            <span class="price"  *ngIf="!item.discountAmount || item.discountAmount <= 0">¥{{item.stringMoney}}</span>
+                            <span class="price"  *ngIf="item.discountAmount > 0">¥{{item.discountAmount}}</span>
+                        </p>
+                        <p>
+                            <span class="model">{{item.productSimplifyName}}</span>
+                            <span class="num num-t">¥{{item.stringMoney}}</span>
+                        </p>
+                        <p style="text-align: right;display: inherit;">
+                            <span class="num">x{{item.counts}}</span>
+                        </p>
+                        
+                        <div class="num-box" *ngIf="nShow">
+                            <ion-icon class="reduce" (click)="reduce(item.id)" name="remove-circle"></ion-icon>
+                            <span class="num">{{item.counts}}</span>
+                            <ion-icon class="add" (click)="add(item.id)" name="add-circle"></ion-icon>
+                        </div>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+        <div class="product-count">
+            共
+            <span>{{lengths}}</span>件商品 合计:
+            <span class="num-h"  *ngIf="discountAmount > 0">¥{{total}}</span>
+            <span  *ngIf="!discountAmount">¥{{total}}</span>
+            优惠价:¥<span class="discount"  *ngIf="nHide"> {{discountAmount}} </span>
+            <input type="text" class="discount discounts" value="{{discountAmount}}"  *ngIf="nShow"  [(ngModel)]="discountAmount">
+        </div>
+    </div>
+
+
+    <div class="note">
+        备注：
+        <input class="content" type="text" placeholder="请填写备注" value="" [(ngModel)]="userInfo.remark">
+    </div>
+
+    <div class="payment  lefts">
+        <div class="left">
+            <span>是否需要发票</span>
+        </div>
+        <span class="right">
+            <ion-checkbox  [(ngModel)]="all" color="#E97213" [checked]="all" (click)="yes()"></ion-checkbox>
+        </span>
+    </div>
+    <div class="invoice" (click)="getInv()" *ngIf="need">
+        <span class="inv">发票信息</span>
+        <ion-icon class="gt g" name="ios-arrow-forward"></ion-icon>
+        <div *ngFor="let item of invioces">
+            <div *ngIf="item.type==1">
+                <p>公司名称：
+                    <span>{{item.companyName}}</span>
+                </p>
+                <p>公司税务号：
+                    <span>{{item.taxNumber}}</span>
+                </p>
+                <p>银行账号：
+                    <span>{{item.bankAccount}}</span>
+                </p>
+                <p>公司联系方式：
+                    <span>{{item.phone}}</span>
+                </p>
+            </div>
+            <div *ngIf="item.type==2">
+                <p>发票抬头：
+                    <span>{{item.companyName}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="payment  lefts">
+        <div class="left">
+            <span>是否需要礼品</span>
+        </div>
+        <span class="right">
+            <ion-checkbox [(ngModel)]="alls" color="#E97213" [checked]="alls" (click)="addLift()"></ion-checkbox>
+        </span>
+    </div>
+
+
+    <div class="gift"  *ngIf="gift">
+        <div class="line1">
+            <span class="gift-msg">礼品信息</span>
+            <span class="edit" (click)="gbs()" *ngIf="gb">编辑</span>
+            <span class="edit" (click)="gws()" *ngIf="gw">完成</span>
+        </div>
+        <div class="add-gift" (click)="togift()">
+            <ion-icon class="add-icon" name="add-circle"></ion-icon>
+            <span>添加礼品</span>
+        </div>
+        <ul *ngFor="let item of giftList">
+            <li>
+                <dl>
+                    <dt>
+                        <img src="{{item.productImage}}" alt="">
+                    </dt>
+                    <dd>
+                        <p>
+                            <span class="title" style="width:80%;">{{item.productName}}</span> 
+                            <span class="num">x{{item.counts}}</span>
+                        </p>
+                        <p>
+                            <span class="model">{{item.productSimplifyName}}</span>
+                           
+                        </p>
+
+                        <div class="num-box" *ngIf="gShow"> 
+                            <ion-icon class="reduce"  (click)="reduces(item.id)" name="remove-circle"></ion-icon>
+                            <span class="num">{{item.counts}}</span>
+                            <ion-icon class="add"  (click)="adds(item.id)" name="add-circle"></ion-icon>
+                        </div>
+
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <div class="payment" *ngIf="shenpi">
+            <div class="left">
+                <img src="assets/icon/spdx.png" alt="">
+                <span>审批对象</span>
+            </div>
+
+            <ion-item class="list selsct-li" style="width:50%">
+                <ion-label style="opacity:0">请选择</ion-label>
+                <ion-select class="select"  (ionChange)="change()" [(ngModel)]="dtcName">
+                    <ion-option [value]="item.name"  *ngFor="let item of lis">{{item.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="payment" (click)="toQrCode()">
+            <div class="left">
+                <img src="assets/icon/fkfs.png" alt="">
+                <span>付款方式</span>
+            </div>
+            <span class="right">
+                {{type}}
+            </span>
+        </div>
+    </div>
+
+    <div  *ngIf="good">
+        <div class="payment" style="padding-right:15px" (click)="toPaymentVoucher()"  *ngIf="ping">
+            <div class="left">
+                <img src="assets/icon/upload.png" alt="">
+                <span>付款凭证</span>
+            </div>
+            <span class="right">未上传</span>
+        </div>
+
+        <div class="payment" style="padding-right:15px" (click)="toCodes()" *ngIf="zhifu">
+            <div class="left">
+                <img src="assets/icon/payment-code.png" alt="">
+                <span>付款码</span>
+            </div>
+            <span class="right">
+                <ion-icon class="gt" name="ios-arrow-forward"></ion-icon>
+            </span>
+        </div>
+    </div>
+
+</ion-content>
+<ion-footer  *ngIf="bu" (click)="button()">提交订单</ion-footer>
+<ion-footer  *ngIf="bus">提交订单</ion-footer>
+<ion-footer  *ngIf="but">提交成功</ion-footer>

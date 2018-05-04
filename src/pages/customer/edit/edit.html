@@ -1,0 +1,301 @@
+<!--
+  Generated template for the EditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()"
+        (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="information">
+        <div class="title-main">
+            <img src={{Jiben_img}} alt=""> 基本信息 <span class="stars">(标*的为必填项)</span>
+        </div>
+        <div class="ul">
+            <div class="li">
+                <div class="list">
+                    <span>姓氏</span><span class="star">*</span>:
+                    <input type="text" placeholder="请填写姓氏" value="" [(ngModel)]="userInfo.firstName">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list">
+                    <span>名字</span>
+                    <span class="star">*</span>:
+                    <input type="text" placeholder="请填写名字" value="" [(ngModel)]="userInfo.secondName">
+                </div>
+            </div>
+
+            <div class="li">
+                <span class="span">区号&nbsp;<span class="star">*</span>:</span>
+                <ion-item class="list selsct-li" style="width:80%">
+                    <ion-label class="opacity">区号</ion-label>
+                    <ion-select class="select" [(ngModel)]="glos" (ionChange)="other()">
+                        <ion-option [value]="86">+86</ion-option>
+                        <ion-option [value]="852">+852</ion-option>
+                        <ion-option [value]="853">+853</ion-option>
+                        <ion-option [value]="886">+886</ion-option>
+                        <ion-option [value]="1">其他</ion-option>
+                    </ion-select>
+                </ion-item>
+                <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                </div>
+                <!-- <div class="list" style="width:80%" *ngIf="show">
+                                <input type="text"  value="" placeholder="请填写区号" [(ngModel)]="userInfo.globalRoaming" >
+                            </div> -->
+            </div>
+
+            <div class="li" *ngIf="shows">
+                <div class="list">
+                    <span class="span" style="width:28%">其他区号&nbsp;
+                        <span class="star">*</span>:</span>
+                    <input style="width:72%" type="tel" value="" [(ngModel)]="glo" placeholder="请填写区号">
+                </div>
+            </div>
+
+            <div class="li">
+                <div class="list">
+                    <span>手机号</span><span class="star">*</span>:
+                    <input type="tel" placeholder="请填写手机号" value="" [(ngModel)]="userInfo.tel">
+                </div>
+            </div>
+
+            <div class="li">
+                <span class="span">性别&nbsp;<span class="star">*</span>:</span>
+                <ion-item class="list selsct-li" style="width:80%">
+                    <ion-label class="opacity">性别</ion-label>
+                    <ion-select class="select" [(ngModel)]="userInfo.gender">
+                        <ion-option value="1">男</ion-option>
+                        <ion-option value="2">女</ion-option>
+                        <ion-option value="3">其他</ion-option>
+                    </ion-select>
+                </ion-item>
+                <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                </div>
+            </div>
+            <div class="li">
+                <ion-item class="list selsct-li">
+                    <ion-label>年龄</ion-label>                  
+                    <ion-select class="select" [(ngModel)]="userInfo.ageRange">
+                        <ion-option value="1">21-29</ion-option>
+                        <ion-option value="2">30-40</ion-option>
+                        <ion-option value="3">41-50</ion-option>
+                        <ion-option value="4">50以上</ion-option>
+                    </ion-select>
+                </ion-item>
+                <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                </div>
+            </div>
+            <div class="li">
+                <ion-item class="list selsct-li">
+                    <ion-label>组织者层级</ion-label>  
+                    <ion-select class="select" [(ngModel)]="userInfo.tier">
+                        <ion-option [value]="1">Tier1</ion-option>
+                        <ion-option [value]="2">Tier2</ion-option>
+                        <ion-option [value]="3">Tier3</ion-option>
+                    </ion-select>
+                </ion-item>
+                <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                </div>
+            </div>
+            <div class="li">
+                <span class="span">省份&nbsp;<span class="star">*</span>:</span>
+                <ion-item class="list selsct-li" style="width:80%">
+                    <ion-label class="opacity">省份</ion-label>
+                    <ion-select class="select" (ionChange)="change($event,'addProvince')" [(ngModel)]="userP.province">
+                        <ion-option [value]="item.cityId" *ngFor='let item of addProvince'>{{item.cityName}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                </div>
+            </div>
+
+            <div class="li">
+                <span class="span">城市&nbsp;<span class="star">*</span>:</span>
+                <ion-item class="list  selsct-li" style="width:80%">
+                    <ion-label class="opacity">城市</ion-label>
+                    <ion-select class="select" [(ngModel)]="userN.city">
+                        <ion-option *ngIf="!userP.province">请选择省份</ion-option>
+                        <ion-option [value]="item.cityId" *ngFor='let item of addCity'>{{item.cityName}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                 <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list">
+                    <span>来源:</span>
+                    <!-- <ion-select class="select" (change)="change($event.target.value,'addSource')">
+                        <ion-option [value]="" *ngFor='let item of addSource'></ion-option>
+                    </ion-select> -->
+
+                </div>
+            </div>
+            <div class="li">
+                <div class="list">
+                    <span>备注:</span>
+                    <input type="text" placeholder="请填写备注" value="" [(ngModel)]="userInfo.remarks">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list" (click)="choose()">
+                    <img src={{TianjiaBiaoqian_img}} alt=""> 添加标签
+                    <div class="overflow">
+                        <span class="m" *ngFor="let item of lab">&nbsp;{{item.tagName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="information two">
+        <div class="title-main">
+            <img src={{Qita_img}} alt=""> 其他信息
+        </div>
+        <div class="ul">
+            <div class="li">
+                <div class="list">
+                    <span>邮箱:</span>
+                    <input type="text" placeholder="请填写邮箱" value="{{userInfo.email}}" [(ngModel)]="userInfo.email">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list">
+                    <span>备用手机1:</span>
+                    <input type="tel" value="" placeholder="请填写手机号" [(ngModel)]="userInfo.spareTelFirst">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list">
+                    <span>备用手机2:</span>
+                    <input   type="tel" value="" placeholder="请填写手机号" [(ngModel)]="userInfo.spareTelSecond">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list">
+                    <span>备用手机3:</span>
+                    <input  type="tel" value="" placeholder="请填写手机号" [(ngModel)]="userInfo.spareTelThird">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list" (click)="showCheckbox('爱好')">
+                    <span>爱好</span>
+                    <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                    </div>
+                    <div class="overflow">
+                        <span class="m z" *ngFor="let item of join">{{ ' ' + item.tagName }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="li">
+                 <ion-item class="list selsct-li">
+                    <ion-label>出生月</ion-label>                  
+                    <ion-select class="select" (ionChange)="bChange($event)"  [(ngModel)]="month">
+                        <ion-option [value]="item.value" *ngFor='let item of monthList'>{{item.name + "月"}}</ion-option>
+                    </ion-select>            
+                </ion-item>
+                <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                </div>
+            </div>
+            <div class="li">
+                 <ion-item class="list selsct-li">
+                    <ion-label>出生日</ion-label>                  
+                    <ion-select class="select" [(ngModel)]="day">
+                        <ion-option *ngIf="!month">请选择月</ion-option>
+                        <ion-option [value]="item.value" *ngFor='let item of dayList'>{{item.name + "日"}}</ion-option>
+                    </ion-select>        
+                </ion-item>
+                <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list" (click)="showCheckbox('行业')">
+                    <span>行业</span>
+                    <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                    </div>
+                    <div class="overflow">
+                        <span class="m z" *ngFor="let item of join2">{{ ' '  +  item.tagName }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="li">
+                <div class="list">
+                    <span>职位:</span>
+                    <input type="text" value="" placeholder="请填写职位" [(ngModel)]="userInfo.post">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list">
+                    <span>公司:</span>
+                    <input type="text" value="" placeholder="请填写公司" [(ngModel)]="userInfo.corporation">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list" (click)="showCheckbox('酒类偏好')">
+                    <span>酒类偏好</span>
+                    <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                    </div>
+                    <div class="overflow">
+                        <span class="m" *ngFor="let item of join3">{{' '  +  item.tagName }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="li">
+                <div class="list" (click)="showCheckbox('主要购酒目的')">
+                    <span>主要购酒目的</span>
+                    <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                    </div>
+                    <div class="overflow">
+                        <span class="m z" *ngFor="let item of join4">{{' '  +  item.tagName}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="li">
+                 <ion-item class="list selsct-li">
+                    <ion-label>饮酒频率</ion-label>                 
+                    <ion-select class="select" [(ngModel)]="userInfo.drinkFrequency">
+                        <ion-option [value]="1">高于1次每周</ion-option>
+                        <ion-option [value]="2">1次每周</ion-option>
+                        <ion-option [value]="3">2至3次每月</ion-option>
+                        <ion-option [value]="4">1次每月</ion-option>
+                        <ion-option [value]="5">低于1次每月 </ion-option>
+                    </ion-select>
+                </ion-item>
+                <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                </div>
+            </div>
+            <div class="li">
+                <div class="list" (click)="showCheckbox('日常购酒渠道')">
+                    <span>日常购酒渠道</span>
+                    <div class="sjx">
+                    <img src="{{sjx_img}}" alt="">
+                    </div>
+                    <div class="overflow">
+                        <span class="m z" *ngFor="let item of join6">{{' ' + item.tagName}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</ion-content>
+<ion-footer (click)="save()">保存</ion-footer>

@@ -1,0 +1,139 @@
+<ion-header>
+    <my-nav [title]="title" [showHead] = "showUserImg" [showMenu]="showMenu"  (cartClick) = "cart()"   (settingsClick) = "settings()"  (chatbubblesClick) = "chatbubbles()"></my-nav>
+    <div class="product-list-top">
+        <div class="product-list-content">        
+            <input type="search" placeholder="请输入会员姓名/手机号"  (change)="search()"  [(ngModel)]="text">
+            <div class="search" (click)="search()">
+                <img src={{search_img}} alt="">
+            </div>
+        </div>
+    </div>
+</ion-header>
+
+ <ion-content [ngClass]="{'pos':isABC}">
+    <div class="navigation" >
+        <div class="setup-top" (click)="test()"  *ngIf="hide">
+            <div class="setUp">
+                <img src={{tixingSet_img}} alt="">
+            </div>
+            <div class="message">
+                提醒设置
+            </div>
+        </div>
+        <div class="setup-top" (click)="tests()"  *ngIf="isHide">
+            <div class="setUp">
+                <img src={{tixingSet_img}} alt="">
+            </div>
+            <div class="message">
+                提醒设置
+            </div>
+        </div>
+
+        <div class="setup-top" (click)="ionShai()">
+            <div class="setUp">
+                <img src={{shaixuanSet_img}} alt="">
+            </div>
+            <div class="message">
+                筛选客户
+            </div>
+        </div>
+
+        <div class="setup-top" (click)="createActivity()">
+            <div class="setUp">
+                <img src={{biaoqianSet_img}} alt="">
+            </div>
+            <div class="message">
+                标签管理
+            </div>
+        </div>
+
+        <div class="setup-top" (click)="addcustomer()" *ngIf="hide">
+            <div class="setUp">
+                <img src={{tianjiaSet_img}} alt="">
+            </div>
+            <div class="message">
+                添加客户
+            </div>
+        </div>
+
+        <div class="setup-top" (click)="addcustomesrs()" *ngIf="isHide">
+            <div class="setUp">
+                <img src={{tianjiaSet_img}} alt="">
+            </div>
+            <div class="message">
+                添加客户
+            </div>
+        </div>
+    </div>
+
+
+
+    <ion-segment  class="rule" [(ngModel)]="pet">
+        <ion-segment-button  class="rule-left" value="name" (click)="getCustomerSort(1)">
+                按客户姓名排序
+        </ion-segment-button>
+        <ion-segment-button class="rule-right" value="money" (click)="getCustomerSort(2)">
+                按消费金额排序
+        </ion-segment-button>
+    </ion-segment>
+
+        
+    <div [ngClass]='{"center-list":isABC,"center-list2":!isABC}' id = "scrollBox" [ngSwitch]="pet">
+        <div *ngSwitchCase="'name'">
+            <div  *ngFor="let item of listCustomer">
+                <div *ngIf="item.list!=''">
+                    <span class="sort">{{item.key}}</span>
+                    <ion-item class="list-item" *ngFor="let i of item.list" (click)="goDetails(i)" [id]="item.id">
+                        <div class="list-left">
+                            <img [src]="i.avatar" alt="" *ngIf="i.avatar">
+                            <img src="{{ avatar_img}}" alt="" *ngIf="!i.avatar">
+                        </div>
+                        <div class="list-content">
+                            <div class="list-content-name">
+                                {{i.username}}
+                            </div>
+                            <div class="list-content-phone">
+                                {{i.returnTel}}
+                            </div>
+                        </div>
+                    </ion-item>
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="'money'">
+            <ion-item class="list-item" *ngFor="let i of customerMoneyList" (click)="goDetails(i)">
+                <div class="list-left">
+                    <img [src]="i.avatar" alt="" *ngIf="i.avatar">
+                    <img src="{{ avatar_img}}" alt="" *ngIf="!i.avatar">
+                </div>
+                <div class="list-content">
+                    <div class="list-content-name">
+                        {{i.username}}
+                    </div>
+                    <div class="list-content-phone">
+                        {{i.returnTel}}
+                    </div>
+                </div>
+                <div class="consume" *ngIf="i.totalConsumeAccount">&yen;{{i.totalConsumeAccount/100}}</div>
+                <div class="consume" *ngIf="!i.totalConsumeAccount">0</div>
+            </ion-item>   
+        </div>
+       
+    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!isABC&&loadMore" >
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载更多...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <div  style="position: fixed;
+    top: 29%;
+    width: 20px;
+    height: auto;
+    right: 0;z-index:1000;
+    color:#346792"
+    *ngIf="isABC">
+   
+        <div style="text-align:center; font-size:1rem;margin-bottom:0.2rem" *ngFor="let item of breeds" (click) = "indexClick(item)">{{item}}</div>
+   </div>
+   
+</ion-content>
+

@@ -1,0 +1,250 @@
+<ion-header>
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+</ion-header>
+
+<ion-content class="page">
+     <!-- 下拉刷新 -->
+     <ion-refresher (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="Refreshing...">
+            </ion-refresher-content>
+        </ion-refresher>
+    <div class="create-wrap" (click)="toproducts()">
+        <div class="create-a">
+            <img src={{Activity_img}}>
+            <div>快速下单</div>
+            <span class="creat-icon">
+                <ion-icon name="ios-arrow-forward"></ion-icon>
+            </span>
+        </div>
+    </div>
+    <div class="create-wrap">
+        <div class="create-a" (click)="toOrderAll()">
+            <img src={{Activity_img}}>
+            <div>全部订单</div>
+            <span class="creat-icon">
+                <ion-icon name="ios-arrow-forward"></ion-icon>
+            </span>
+        </div>
+    </div>
+    <div class="tab-wrap">
+        <ion-segment [(ngModel)]="pet">
+            <ion-segment-button value="dsp" (click)="currentStatus(10)">
+                待审批
+            </ion-segment-button>
+            <ion-segment-button value="dfk" (click)="currentStatus(1)">
+                待付款
+            </ion-segment-button>
+            <ion-segment-button value="dfh" (click)="currentStatus(6)">
+                待发货
+            </ion-segment-button>
+            <ion-segment-button value="dsh" (click)="currentStatus(7)">
+                待收货
+            </ion-segment-button>
+            <ion-segment-button value="ywc" (click)="currentStatus(8)">
+                已完成
+            </ion-segment-button>
+            <ion-segment-button value="xdd" (click)="currentStatus(13)">
+                被驳回
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+
+
+    <div class="activity-content" [ngSwitch]="pet">
+        <!-- 待审批 -->
+        <ul *ngSwitchCase="'dsp'">
+            <li *ngFor="let item of dataList" (click) = "toOrderDetail(item.id,item.status)">
+                <div class="activity-list">
+                    <span>下单时间:</span>
+                    <span class="b-color">{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                    <span class="activity-state" style="font-size:1.1rem">{{getStatus(item.status,item.subStatus)}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单编号:</span>
+                    <span>{{item.orderNum}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>下单客户:</span>
+                    <span>{{item.buyerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>商品数量:</span>
+                    <span>{{item.productCounts}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单总金额:</span>
+                    <span class="b-color red">￥{{item.discountAmount / 100}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>所属销售:</span>
+                    <span>{{item.salesName}}</span>
+                </div>
+            </li>
+        </ul>
+
+        <!-- 待付款 -->
+        <ul *ngSwitchCase="'dfk'">
+            <li *ngFor="let item of dataList" (click) = "toOrderDetail(item.id,item.status)">
+                <div class="activity-list">
+                    <span>下单时间:</span>
+                    <span class="b-color">{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                    <span class="activity-state"  style="font-size:1.1rem">待付款</span>
+                </div>                
+                <div class="activity-list">
+                    <span>订单编号:</span>
+                    <span>{{item.orderNum}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>下单客户:</span>
+                    <span>{{item.buyerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>商品数量:</span>
+                    <span>{{item.productCounts}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单总金额:</span>
+                    <span class="b-color red">￥{{item.discountAmount / 100}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>付款方式:</span>
+                    <span *ngIf="item.preparePay == 1">现金支付</span>
+                    <span *ngIf="item.preparePay == 2">POS机支付</span>
+                    <span *ngIf="item.preparePay == 3">银行转账</span>
+                    <span *ngIf="item.preparePay == 6">支付宝支付</span>
+                    <span *ngIf="item.preparePay == 5">微信支付</span>
+                </div>
+                <div class="activity-list">
+                    <span>所属销售:</span>
+                    <span>{{item.salesName}}</span>
+                </div>
+            </li>
+        </ul>
+        <!-- 待发货 -->
+        <ul *ngSwitchCase="'dfh'">
+            <li *ngFor="let item of dataList" (click) = "toOrderDetail(item.id,item.status)">
+                <div class="activity-list">
+                    <span>下单时间:</span>
+                    <span class="b-color">{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                    <span class="activity-state"  style="font-size:1.1rem">待发货</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单编号:</span>
+                    <span>{{item.orderNum}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>下单客户:</span>
+                    <span>{{item.buyerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>商品数量:</span>
+                    <span>{{item.productCounts}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单总金额:</span>
+                    <span class="b-color red">￥{{item.discountAmount / 100}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>所属销售:</span>
+                    <span>{{item.salesName}}</span>
+                </div>
+            </li>
+        </ul>
+        <!-- 待收货 -->
+        <ul *ngSwitchCase="'dsh'">
+            <li *ngFor="let item of dataList" (click) = "toOrderDetail(item.id,item.status)">
+                <div class="activity-list">
+                    <span>下单时间:</span>
+                    <span class="b-color">{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                    <span class="activity-state"  style="font-size:1.1rem">待收货</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单编号:</span>
+                    <span>{{item.orderNum}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>下单客户:</span>
+                    <span>{{item.buyerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>商品数量:</span>
+                    <span>{{item.productCounts}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单总金额:</span>
+                    <span class="b-color red">￥{{item.discountAmount / 100}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>所属销售:</span>
+                    <span>{{item.salesName}}</span>
+                </div>
+            </li>
+        </ul>
+        <!-- 已完成 -->
+        <ul *ngSwitchCase="'ywc'">
+            <li *ngFor="let item of dataList" (click) = "toOrderDetail(item.id,item.status)">
+                <div class="activity-list">
+                    <span>下单时间:</span>
+                    <span class="b-color">{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                    <span class="activity-state"  style="font-size:1.1rem">{{getStatus(item.status,item.subStatus)}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单编号:</span>
+                    <span>{{item.orderNum}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>下单客户:</span>
+                    <span>{{item.buyerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>商品数量:</span>
+                    <span>{{item.productCounts}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单总金额:</span>
+                    <span class="b-color red">￥{{item.discountAmount / 100}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>所属销售:</span>
+                    <span>{{item.salesName}}</span>
+                </div>
+            </li>
+        </ul>
+         <!-- 被驳回 -->
+         <ul *ngSwitchCase="'xdd'">
+            <li *ngFor="let item of dataList" (click) = "toOrderDetail(item.id,item.status,item.isLogisticsOrder)">
+                <div class="activity-list">
+                    <span>下单时间:</span>
+                    <span class="b-color">{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                    <span class="activity-state"  style="font-size:1.1rem">{{getStatus(item.status,item.subStatus)}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单编号:</span>
+                    <span>{{item.orderNum}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>下单客户:</span>
+                    <span>{{item.buyerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>商品数量:</span>
+                    <span>{{item.productCounts}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>订单总金额:</span>
+                    <span class="b-color red">￥{{item.discountAmount / 100}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>所属销售:</span>
+                    <span>{{item.salesName}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf = "loadMore">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载更多...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

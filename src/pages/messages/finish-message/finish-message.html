@@ -1,0 +1,26 @@
+<ion-header>
+    <my-nav [title]="title" [type]="'message'" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()"
+        (chatbubblesClick)="chatbubbles()"></my-nav>
+</ion-header>
+
+<ion-content>
+    <div class="news-wrap" style="height:auto;min-height: 100%;">
+        <ul>
+            <li *ngFor="let item of messageList" style="width:100%;margin-top:10px">
+
+                <div>
+                    <div class="news-source">{{item.alert}}
+                        <div class="news-time">
+                            <span>{{item.createTime | date:'MM月dd日'}}</span>
+                            <span>{{item.createTime | date:'HH:mm'}}</span>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <img src="assets/icon/1.png">
+                        <div>{{item.message}}</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</ion-content>

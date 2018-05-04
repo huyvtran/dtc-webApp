@@ -1,0 +1,36 @@
+<!--
+  Generated template for the LabelManagementPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()"
+        (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="payment" (click)="tolabelestablish()">
+        <div class="left">
+            <img src={{ChuangjiaBiaoqian_img}} alt="">
+            <span>创建标签</span>
+        </div>
+
+    </div>
+    <ion-list>
+        <ion-item-sliding *ngFor="let item of list">
+            <ion-item>
+                <div class="con">
+                    <!-- (click)="update(item.id)" -->
+                    <p class="p" (click)="update(item.id)">{{item.tagName}}({{item.memberFrontQueries.length}})</p>
+                    <p class='p1'><span *ngFor="let i of item.memberFrontQueries">{{i.username+','}}</span></p>
+                </div>
+            </ion-item>
+            <ion-item-options>
+                <button class="button" danger (click)="delete(item)">删除</button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>

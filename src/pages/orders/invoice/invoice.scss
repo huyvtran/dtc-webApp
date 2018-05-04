@@ -1,0 +1,67 @@
+page-invoice {
+    ul li {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        padding-left: 0.86rem;
+        padding-right: 0.86rem;
+        span {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            line-height: 2.3rem;
+            color: #333;
+        }
+        span:nth-child(2) {
+            color: #2a2a2a;
+        }
+    }
+    ul li:first-child {
+        justify-content: flex-start;
+        span:first-child {
+            margin-right: 30px;
+        }
+    }
+    ul li:last-child {
+        border-bottom: none;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .license {
+            width: 7.86rem;
+            height: 5.71rem;
+            margin-top: 0.67rem;
+            margin-left: 1.21rem;
+            border: 1px solid #DDDDDD;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            ion-icon {
+                color: #999;
+            }
+        }
+    }
+    .icon {
+        font-size: 20px;
+    }
+    .ion-checkmark-circled-gray,
+    .ion-android-radio-button-off {
+        color: #999;
+    }
+    .ion-android-radio-button-off {
+        margin-right: 0.36rem;
+    }
+    .ion-checkmark-circled-orange {
+        color: #E97213;
+        margin-right: 0.36rem;
+    }
+    .button {
+        height: 3.21rem;
+        background: #346792;
+        color: #fff;
+        width: 100%;
+        font-family: PingFang-SC-Medium;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+}

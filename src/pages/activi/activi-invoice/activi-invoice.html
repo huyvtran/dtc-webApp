@@ -1,0 +1,89 @@
+<!--
+  Generated template for the ChooseInvoicePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of userInfo">
+      <ion-item>
+        <div class="invoice-form">
+          <ul (click)="update(item.id)" *ngIf="item.type==1">
+            <li>
+              <div class="list">
+                <span>公司名称:</span>
+                <span>{{item.companyName}}</span>
+                <span>公司发票</span>
+              </div>
+            </li>
+            <li>
+              <div class="list">
+                <span>联系电话:</span>
+                <span>{{item.phone}}</span>
+              </div>
+            </li>
+            <li>
+              <div class="list">
+                <span>税号:</span>
+                <span>{{item.taxNumber}}</span>
+              </div>
+            </li>
+            <li>
+              <div class="list">
+                <span>开户行:</span>
+                <span>{{item.bankName}}</span>
+              </div>
+            </li>
+            <li>
+              <div class="list">
+                <span>账号:</span>
+                <span>{{item.bankAccount}}</span>
+              </div>
+            </li>
+            <li class="listImg">
+              <div class="img" *ngFor="let i of item.pictureList">
+                <img src="{{i.pictureUrl}}" alt="">
+              </div>
+            </li>
+
+          </ul>
+
+          <div (click)="update(item.id)" class="individual" *ngIf="item.type==2">
+            <div class="in-box">
+              <span>发票抬头:</span>
+              <span>{{item.companyName}}</span>
+              <span>个人发票</span>
+            </div>
+          </div>
+
+          <div class="state">
+            <span *ngIf="item.isDefault==1">默认</span>
+            <button class="x" (click)="setup(item.id)" *ngIf="item.isDefault==2">设为默认</button>
+          </div>
+
+          <div class="input" (click)="pushList(item)">
+            <input type="radio" name="radio">
+          </div>
+
+        </div>
+
+      </ion-item>
+      <ion-item-options>
+        <button danger (click)="delete(item.id)" *ngIf="d">删除</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <div class="add" (click)="pop()">完成</div>
+  <div class="add" (click)="ionIoniceState()">添加新发票</div>
+</ion-footer>

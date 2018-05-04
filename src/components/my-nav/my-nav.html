@@ -1,0 +1,20 @@
+
+<ion-navbar >
+  <ion-grid>
+      <ion-row>
+          <ion-col col-4>
+              <div class="herd" (click)="settings()" style="overflow: hidden;border-radius: 50%;width:3.5rem;height:3.5rem" *ngIf = "showHead">
+                  <img class="content-imgs" src={{headImg}} alt="">
+              </div>
+          </ion-col>
+          <ion-col col-4>
+              <h4>{{title}}</h4>
+          </ion-col>
+          <ion-col col-4 [ngStyle]="{'visibility':showMenu ? 'visible':'hidden'}">
+              <ion-icon name="cart" class='car cart' (click)="cart()"  *ngIf="type != 'shopping-cart'"><div class="number" *ngIf="hi">{{lens}}</div></ion-icon>
+              <ion-icon class="message" name="chatbubbles" (click)="chatbubbles()" *ngIf="type != 'message'"><div class="red"  *ngIf="hide"></div></ion-icon>
+              <ion-icon name="settings" (click)="settings()" *ngIf="type != 'setting'"></ion-icon>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-navbar>

@@ -1,0 +1,33 @@
+
+<ion-header>
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <div>
+      <img class="login-logo" src={{logo_img_path}}>
+    </div>
+  
+  
+    <p class="title">设置密码</p>
+    <div class="input">
+      <img class="input-icon" src={{code_img_path}} >
+      <ion-input type="password" placeholder="请填写密码" class="input-psd"  [(ngModel)] = "userInfo.password"></ion-input>
+    </div>
+  
+    <div class="input">
+      <img class="input-icon" src={{code_img_path}}>
+      <ion-input type="password" placeholder="请再次填写密码" class="input-psd"  [(ngModel)] = "userInfo.newpassword"></ion-input>
+    </div>
+
+    <div class="input color">
+       密码位数为6-14位，至少要有1个字母
+    </div>
+  
+    <button ion-button round (click)="setpwd()" >提&nbsp;&nbsp;&nbsp;交</button>
+  
+    <div style="margin-top:10px;padding-right:40px;text-align:right">
+       <a style="color:white" (click) = "back()">返回></a>
+    </div>
+
+  </ion-content>

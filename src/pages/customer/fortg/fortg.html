@@ -1,0 +1,125 @@
+<!--
+  Generated template for the FortgPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()"
+        (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="state">
+        <div class="process">
+            <div class="image">
+                <img src={{Commodity_img}} alt="">
+            </div>
+            <div class="state-p">
+                <span>最新物流 08:07</span>
+                <span>
+          <img src={{Car_img}} alt="">
+          运输中
+        </span>
+                <span>由【上海浦东中转站】发往【上海浦东公司】</span>
+            </div>
+        </div>
+        <div class="process">
+            <div class="imge-2">
+                <img src={{Coordinate_img}} alt="">
+            </div>
+            <div class="conte">
+                <span>收货人：艾安琪</span>
+                <span>123123131</span>
+                <span>收货地址：上海市浦东新区福山路街道东方路118弄世外桃源4号楼409室</span>
+            </div>
+        </div>
+        <div class="process">
+            <span>下单客户：</span>
+            <span>艾安琪</span>
+            <span>客户ID：</span>
+            <span>123526</span>
+            <span>手机号：</span>
+            <span>15649987364</span>
+        </div>
+    </div>
+    <div class="merch">
+        <div class="andise">
+            <div class="me-an">
+                <img src={{Commodity_img}} alt="">
+            </div>
+            <div class="introduce">
+                <span>麦卡伦 晖钻</span>
+                <span>￥--</span>
+                <span>SKU</span>
+                <span>￥--</span>
+                <span>    </span>
+                <span>×--</span>
+            </div>
+        </div>
+        <div class="andise">
+            <div class="me-an">
+                <img src={{Commodity_img}} alt="">
+            </div>
+            <div class="introduce">
+                <span>麦卡伦 晖钻</span>
+                <span>￥--</span>
+                <span>SKU</span>
+                <span>￥--</span>
+                <span>    </span>
+                <span>×--</span>
+            </div>
+        </div>
+        <div class="andise">
+            <div class="me-an">
+                <img src={{Commodity_img}} alt="">
+            </div>
+            <div class="introduce">
+                <span>麦卡伦 晖钻</span>
+                <span>￥--</span>
+                <span>SKU</span>
+                <span>￥--</span>
+                <span>    </span>
+                <span>×--</span>
+            </div>
+        </div>
+    </div>
+    <div class="statistics">
+        共4件商品 合计:¥-- 优惠价:<span>¥--</span>
+    </div>
+    <div class="options">
+        <ion-list>
+            <button>
+          <img src={{Lipin_img}} alt="">添加礼品
+        </button>
+            <button>
+          <span>备注：</span>
+          <span>酒瓶刻字“Chris Wang”</span>
+        </button>
+            <button>
+          <div class="describe">
+            <span>发票抬头：上海新信网络科技有限公司</span>
+            <span>修改</span>
+            <span>公司税务号：--</span>
+            <span>银行账号：--</span>
+            <span>公司联系方式：--</span>
+          </div>
+        </button>
+            <button>
+          <span>是否需要发票</span>
+          <span>
+            <ion-checkbox checked="true"></ion-checkbox>
+          </span>
+        </button>
+            <!-- <button ion-item>
+          <img src={{Apporved_img}} alt="">审批订单
+        </button> -->
+            <button ion-item>
+          <img src={{Payment_img}} alt="">付款方式
+        </button>
+        </ion-list>
+    </div>
+</ion-content>
+<ion-footer>提交订单</ion-footer>

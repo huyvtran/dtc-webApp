@@ -1,0 +1,189 @@
+my-nav {
+    /* 头部样式 */
+    .bar-button::after {
+        width: 6.0rem;
+    }
+    .headSwitch {
+        display: none;
+    }
+    ion-navbar {
+        padding-top: 1.5rem;
+        position: relative !important;
+        .herd {
+            position: absolute;
+            margin-top: -1.9rem;
+            top: 50%;
+            width: 4.0rem;
+            height: 4.0rem;
+            left: .5rem;
+            z-index: 9999;
+        }
+        .grid {
+            padding: 0;
+        }
+        h4 {
+            letter-spacing: 1px;
+            position: absolute;
+            margin-top: -1.9rem;
+            top: 50%;
+            display: inline-block;
+            width: 100%;
+            height: 3.7rem;
+            line-height: 3.7rem;
+            text-align: center;
+            font-size: 1.7rem;
+        }
+        ion-col {
+            z-index: 0;
+        }
+        ion-icon {
+            position: relative;
+            margin-right: 1.5rem;
+            float: right;
+            font-size: 2.4rem;
+            &.message {
+                .red {
+                    width: 0.8rem;
+                    height: 0.8rem;
+                    background: red;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: -.4rem;
+                    top: 0;
+                }
+            }
+            &.cart {
+                .number {
+                    position: absolute;
+                    top: -.3rem;
+                    right: -.5rem;
+                    min-width: 1.2rem;
+                    padding-left: .2rem;
+                    padding-right: .2rem;
+                    height: 1.2rem;
+                    text-align: center;
+                    line-height: 1.2rem;
+                    font-size: 1rem;
+                    background: #ff0000;
+                    border-radius: 41%;
+                }
+            }
+        }
+        .car {
+            margin-right: 0;
+        }
+    }
+    .toolbar {
+        box-sizing: border-box;
+        padding-top: 3rem;
+    }
+    .toolbar-title-md {
+        display: inline-block;
+        text-align: center;
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: #000;
+        pointer-events: auto;
+    }
+    .ion-ios-settings:before {
+        display: inline-block;
+        width: 1.8rem;
+        height: 1.8rem;
+        content: '';
+        background: url('../assets/product/shezhi.png')no-repeat center/contain;
+        clear: both;
+    }
+    .ion-md-settings:before {
+        display: inline-block;
+        width: 1.8rem;
+        height: 1.8rem;
+        content: '';
+        background: url('../assets/product/shezhi.png')no-repeat center/contain;
+        clear: both;
+    }
+    .ion-ios-chatbubbles:before {
+        display: inline-block;
+        width: 1.8rem;
+        height: 1.8rem;
+        content: '';
+        background: url('../assets/product/xinxi.png')no-repeat center/contain;
+        clear: both;
+    }
+    .ion-md-chatbubbles:before {
+        display: inline-block;
+        width: 1.8rem;
+        height: 1.8rem;
+        content: '';
+        background: url('../assets/product/xinxi.png')no-repeat center/contain;
+        clear: both;
+    }
+    .ion-ios-cart:before {
+        display: inline-block;
+        width: 1.8rem;
+        height: 1.8rem;
+        content: '';
+        background: url('../assets/product/shop-car.png')no-repeat center/contain;
+        clear: both;
+    }
+    .ion-md-cart:before {
+        display: inline-block;
+        width: 1.8rem;
+        height: 1.8rem;
+        content: '';
+        background: url('../assets/product/shop-car.png')no-repeat center/contain;
+        clear: both;
+    }
+    .toolbar-background {
+        background-color: #346792;
+    }
+    .toolbar-title {
+        color: white;
+        text-align: center
+    }
+    .navIcon {
+        color: white;
+        font-size: 2rem;
+        float: right;
+        margin-right: 1.5rem;
+    }
+    .tabs-md .tab-button-icon {
+        width: 3.5rem;
+        height: 3rem;
+    }
+    .back-button-icon-ios {
+        color: white;
+    }
+    .back-button {
+        color: white !important;
+    }
+    .back-button.show-back-button {
+        position: absolute;
+        z-index: 500;
+    }
+    .segment .segment-button:first-of-type {
+        border-radius: 0;
+    }
+    .segment .segment-button:last-of-type {
+        border-radius: 0;
+    }
+    .segment .segment-button {
+        background: white;
+        color: black;
+    }
+    .segment .segment-button.segment-activated {
+        color: #488AFF;
+        font-weight: bold;
+    }
+    .segment-ios .segment-button.segment-activated {
+        background: white;
+        border-bottom: .125rem solid #488AFF;
+    }
+    .segment-ios .segment-button {
+        border: 0;
+        height: 6.4rem;
+        line-height: 6.4rem;
+    }
+    .toolbar-content {
+        color: white;
+    }
+}

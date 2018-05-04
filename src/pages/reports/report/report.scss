@@ -1,0 +1,180 @@
+page-report {
+    ion-content{
+        .col {
+            text-align: center;
+        }
+        .left {
+            float: left;
+        }
+        .right {
+            float: right;
+        }
+        ul,
+        ul li {
+            padding: 0;
+            margin: 0
+        }
+        .report-center-wrap {
+            background: #fbfbfb;
+        }
+        .report-nav {
+            height: 3rem;
+            line-height: 3rem;
+            padding: 0 10px;
+            text-align: center;
+            font-size: 0;
+            span{
+                display: inline-block;
+                width: 50%;
+                font-size: 1.2rem;
+                &.check{
+                    color: #346792;
+                    border-bottom: 2px solid #346792;
+                }
+            }
+            
+        }
+        .report-center {
+            margin: 0px 0 3px;
+            padding-top: 15px;
+            text-align: center;
+            background: #fff;
+            // border-bottom: 1px solid #ddd;
+            // height:13rem;
+        }
+        .report-content {
+            display: inline-block;
+            text-align: center;
+        }
+        .report-content>div:nth-child(1),
+        .report-content>div:nth-child(3) {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .report-content>div:nth-child(2),
+        .report-content>div:nth-child(4) {
+            font-size: 1.5rem;
+            color: #346792;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .raking-line,
+        .money-line {
+            height: 44px;
+            line-height: 44px;
+            padding: 0 4% 0;
+            border-bottom: 1px solid #ddd;
+            span {
+                font-size: 1.08rem;
+                color: #999;
+                &.col-show{
+                    color: #346792;
+                }
+            }
+        }
+        .raking-line>span:nth-child(1) {
+            color: #333;
+        }
+        .raking-line>span:nth-child(2) {
+            margin-right: 4%;
+            color: #C7C7CC;
+        }
+        .lefts {
+            padding-right: 0;
+        }
+        .sale {
+            text-align: left;
+            padding-left: 0px;
+        }
+        .sale-wrap{
+            padding: 0;
+            padding-left: 0;
+            height: 30px;
+            line-height: 30px;
+            background: rgba(239, 239, 244, 1);
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            .col {
+                padding: 0;
+            }
+        }
+        .sale-person {
+            height:6rem;
+            margin: 0;
+            font-size: 1.08rem;
+            color: #000;
+            padding: 0;
+            .col {
+                padding: 0
+            }
+        }
+        .sale-img {
+            padding-left: 0;
+        }
+        .sale-img img {
+            width: 50px;
+            height: 50px;
+        }
+        .sale-img div {
+            margin-left: 5px;
+            color: #092C74;
+            font-size: 1.2rem;
+            line-height: 50px;
+            width: 40%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .sale-row {
+            width: 92%;
+            margin: 0 auto;
+            color: #6D6D72;
+            font-size:13px;
+            font-family: PingFangSC-Regular;
+        }
+        .person-row {
+            width: 94%;
+            margin: 0 auto;
+            padding: 10px 1%;
+            border-bottom: 1px solid #ddd;
+        }
+        .dtc-sales {
+            .list-title{
+                padding-left: 10px;
+                height: 30px;
+                line-height: 30px;
+                background: rgba(239, 239, 244, 1);
+                color: #333;
+            }
+            .list-item{
+                width: 100%;
+                margin: 10px 5px 0;
+                padding-left: 10px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+            .customer-info{
+                display: inline-block;
+                margin-left: 10px;
+                margin-top: 5px;
+                span{
+                    display: block;
+                    line-height: 20px;
+                }
+            }
+            .customer-money{
+                position: absolute;
+                right: 10px;
+                display: inline-block;
+                margin-top: 5px;
+                text-align: right;
+                span{
+                    display: block;
+                    line-height: 20px;
+                }
+            }
+        }
+        
+    }
+}

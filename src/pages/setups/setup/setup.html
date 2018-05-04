@@ -1,0 +1,98 @@
+<ion-header>
+    <!-- <ion-navbar [ngClass]='{headSwitch:switch}'>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-4></ion-col>
+                <ion-col col-4>
+                    <h4>{{title}}</h4>
+                </ion-col>
+                <ion-col col-4  *ngIf="shows">
+                    <ion-icon name="cart" class='car' (click)="cart()"></ion-icon>
+                    <ion-icon name="chatbubbles" (click)="chatbubbles()"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar> -->
+    <my-nav [title]="title" [type]="'setting'" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()" ></my-nav>
+</ion-header>
+
+
+<ion-content>
+    <div class="top">
+        <div class="top-portrait" (click)="changeavatar()">
+            <img src="{{message.headImg}}" alt="" class="top-img">
+        </div>
+        <div class="top-nickname">
+            {{message.name}}
+        </div>
+        <div class="top-bottom">
+            <div class="name">
+                <p>公司名</p>
+                <p class="top-p">{{message.companyName}}</p>
+            </div>
+
+            <div class="name">
+                <p>工号</p>
+                <p class="top-p">{{message.employeeNo}}</p>
+            </div>
+
+            <div class="name">
+                <p>部门</p>
+                <p class="top-p">{{message.deptName}}</p>
+            </div>
+
+            <div class="name">
+                <p>职位</p>
+                <p class="top-p">{{message.title}}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="payment">
+        <div class="left">
+            <span>手机号</span>
+        </div>
+        <span class="right">
+     {{message.mobile}}
+    </span>
+    </div>
+
+    <div class="payment">
+        <div class="left">
+            <span>邮箱</span>
+        </div>
+        <span class="right">
+      {{message.email}}
+    </span>
+    </div>
+
+    <div class="payment" (click)="modifypassword()">
+        <div class="left">
+            <span>修改密码</span>
+        </div>
+        <span class="right rights">
+      <ion-icon class="gt" name="ios-arrow-forward"></ion-icon>
+    </span>
+    </div>
+
+    <div class="payment">
+        <div class="left">
+            <span>版本号</span>
+        </div>
+        <span class="right">
+         {{version}}
+        </span>
+    </div>
+
+    <div class="ewm">
+        <img src="{{message.ticket}}" alt="" class="ewm-img">
+    </div>
+
+    <div class="introduce" *ngIf="show">
+        客户使用微信扫描该二维码
+    </div>
+
+    <button class="button" (click)="signout()">退出系统</button>
+
+</ion-content>

@@ -1,0 +1,289 @@
+<ion-header>
+    <!-- <ion-navbar [ngClass]='{headSwitch:switch}'>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-4>
+                    <div class="herd" (click)="settings()" style="overflow: hidden;border-radius: 50%;width:3.5rem;height:3.5rem">
+                        <img class="content-imgs" src={{message.headImg}} alt="">
+                    </div>
+                </ion-col>
+                <ion-col col-4>
+                    <h4>{{title}}</h4>
+                </ion-col>
+                <ion-col col-4 *ngIf="show">
+                    <ion-icon name="cart" class="car" (click)="cart()"></ion-icon>
+                    <ion-icon name="chatbubbles" (click)="chatbubbles()"></ion-icon>
+                    <ion-icon name="settings" (click)="settings()"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar> -->
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+</ion-header>
+
+<ion-content class="page">
+    <!-- 下拉刷新 -->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="刷新中...">
+            </ion-refresher-content>
+        </ion-refresher>
+    <div class="create-wrap">
+        <div class="create-a" (click)="createActivity()">
+            <img src={{Activity_img}}>
+            <div>创建活动</div>
+            <span class="creat-icon"><ion-icon name="ios-arrow-forward" style="margin:0"></ion-icon></span>
+        </div>
+    </div>
+    <div class="create-wrap">
+        <div class="create-a" (click)="getAllActivity()">
+            <img src={{Activity_img}}>
+            <div>全部活动</div>
+            <span class="creat-icon">
+				<ion-icon name="ios-arrow-forward" style="margin:0"></ion-icon>
+			</span>
+        </div>
+    </div>
+    <div class="tab-wrap">
+        <ion-segment [(ngModel)]="pet">
+            <ion-segment-button value="nsp" (click)="getEventLists(1)">
+                新活动
+            </ion-segment-button>
+            <ion-segment-button value="dsp" (click)="getEventLists(2)">
+                待审批
+            </ion-segment-button>
+            <ion-segment-button value="jxz" (click)="getEventLists(3)">
+                指派培训
+            </ion-segment-button>
+            <ion-segment-button value="ywc" (click)="getEventLists(4)">
+                进行中
+            </ion-segment-button>
+            <ion-segment-button value="xshd" (click)="getEventLists(5)">
+                待核销
+            </ion-segment-button>
+            <ion-segment-button value="hwc" (click)="getEventLists(6)">
+                已完成
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    
+    <div class="activity-content" [ngSwitch]="pet">
+        <ul *ngSwitchCase="'nsp'" ng-show="eventList.length>0">
+            <li *ngFor="let item of eventList" (click)="goActivityDetails(item.id)" >
+                <div class="activity-list">
+                    <span>活动名:</span>
+                    <span class="b-color">{{item.eventName}}</span>
+                    <span class="activity-state">新活动</span>
+                </div>
+                <div class="activity-list">
+                    <span>申请人:</span>
+                    <span>{{item.creatorName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>现场销售:</span>
+                    <span *ngIf="!item.saleName">-</span>
+                    <span  *ngIf="item.saleName">{{item.saleName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>活动时间:</span>
+                    <span class="b-color">{{item.beginTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>组织者:</span>
+                    <span *ngIf="item.organizerName">{{item.organizerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span >培训师:</span>
+                    <span *ngIf="!item.trainerName">待定</span>                    
+                    <span *ngIf="item.trainerName">{{item.trainerName}}</span>
+                </div>
+                <div class="activity-list" *ngIf="item.subStatus==2">
+                    <span>备注:</span>
+                    <span>被DTC Head驳回</span>
+                </div>
+                <div class="activity-list" *ngIf="item.status==1&&item.subStatus!=3&&item.subStatus!=2">
+                    <span>备注:</span>
+                    <span>草稿</span>
+                </div>
+            </li>
+        </ul>
+        <ul *ngSwitchCase="'dsp'" ng-show="eventList.length>0">
+            <li *ngFor="let item of eventList" (click)="goActivityDetails(item.id)">
+                <div class="activity-list">
+                    <span>活动名:</span>
+                    <span class="b-color">{{item.eventName}}</span>
+                    <span class="activity-state">待审批</span>
+                </div>
+                <div class="activity-list">
+                    <span>申请人:</span>
+                    <span>{{item.creatorName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>现场销售:</span>
+                    <span>{{item.saleName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>活动时间:</span>
+                    <span class="b-color">{{item.beginTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>组织者:</span>
+                    <span>{{item.organizerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>培训师:</span>
+                    <span *ngIf="!item.trainerName">待定</span>                    
+                    <span *ngIf="item.trainerName">{{item.trainerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>备注:</span>
+                    <span>--</span>
+                </div>
+            </li>
+        </ul>
+        <ul *ngSwitchCase="'jxz'" ng-show="eventList.length>0">
+            <li *ngFor="let item of eventList" (click)="goActivityDetails(item.id)">
+                <div class="activity-list">
+                    <span>活动名:</span>
+                    <span class="b-color">{{item.eventName}}</span>
+                    <span class="activity-state">指派培训</span>
+                </div>
+                <div class="activity-list">
+                    <span>申请人:</span>
+                    <span>{{item.creatorName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>现场销售:</span>
+                    <span>{{item.saleName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>活动时间:</span>
+                    <span class="b-color">{{item.beginTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>组织者:</span>
+                    <span>{{item.organizerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>培训师:</span>
+                    <span *ngIf="!item.trainerName">待定</span>                    
+                    <span *ngIf="item.trainerName">{{item.trainerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>备注:</span>
+                    <span>--</span>
+                </div>
+            </li>
+        </ul>
+        <ul *ngSwitchCase="'ywc'" ng-show="eventList.length>0">
+            <li *ngFor="let item of eventList" (click)="goActivityDetails(item.id)">
+                <div class="activity-list">
+                    <span>活动名:</span>
+                    <span class="b-color">{{item.eventName}}</span>
+                    <span class="activity-state">进行中</span>
+                </div>
+                <div class="activity-list">
+                    <span>申请人:</span>
+                    <span>{{item.creatorName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>现场销售:</span>
+                    <span>{{item.saleName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>活动时间:</span>
+                    <span class="b-color">{{item.beginTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>组织者:</span>
+                    <span>{{item.organizerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>培训师:</span>
+                    <span *ngIf="!item.trainerName">待定</span>                    
+                    <span *ngIf="item.trainerName">{{item.trainerName}}</span>
+                </div>
+                <div class="activity-list" *ngIf="item.subStatus==6">
+                    <span>备注:</span>
+                    <span>待供应商发货</span>
+                </div>
+                <div class="activity-list" *ngIf="item.subStatus!==6">
+                    <span>备注:</span>
+                    <span>--</span>
+                </div>
+            </li>
+        </ul>
+        <ul *ngSwitchCase="'xshd'" ng-show="eventList.length>0">
+            <li *ngFor="let item of eventList" (click)="goActivityDetails(item.id)">
+                <div class="activity-list">
+                    <span>活动名:</span>
+                    <span class="b-color">{{item.eventName}}</span>
+                    <span *ngIf="item.status==5&&item.subStatus==8" class="activity-state">待核销</span>
+                    <span *ngIf="item.status==5&&item.subStatus==9" class="activity-state">核销被驳回</span>
+                </div>
+                <div class="activity-list">
+                    <span>申请人:</span>
+                    <span>{{item.creatorName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>现场销售:</span>
+                    <span>{{item.saleName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>活动时间:</span>
+                    <span class="b-color">{{item.beginTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>组织者:</span>
+                    <span>{{item.organizerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>培训师:</span>
+                    <span *ngIf="!item.trainerName">待定</span>                    
+                    <span *ngIf="item.trainerName">{{item.trainerName}}</span>
+                </div>
+                <div class="activity-list" >
+                    <span>备注:</span>
+                    <span>--</span>
+                </div>
+            </li>
+        </ul>
+        <ul *ngSwitchCase="'hwc'" ng-show="eventList.length>0">
+            <li *ngFor="let item of eventList" (click)="goActivityDetails(item.id)">
+                <div class="activity-list">
+                    <span>活动名:</span>
+                    <span class="b-color">{{item.eventName}}</span>
+                    <span class="activity-state">已完成</span>
+                </div>
+                <div class="activity-list">
+                    <span>申请人:</span>
+                    <span>{{item.creatorName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>现场销售:</span>
+                    <span>{{item.saleName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>活动时间:</span>
+                    <span class="b-color">{{item.beginTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>组织者:</span>
+                    <span>{{item.organizerName}}</span>
+                </div>
+                <div class="activity-list">
+                    <span>培训师:</span>
+                    <span *ngIf="!item.trainerName">待定</span>                    
+                    <span *ngIf="item.trainerName">{{item.trainerName}}</span>
+                </div>
+                <div class="activity-list" >
+                    <span>备注:</span>
+                    <span>--</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="loadMore">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载更多...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+</ion-content>

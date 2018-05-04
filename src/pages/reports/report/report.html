@@ -1,0 +1,178 @@
+<ion-header>
+    <!-- <ion-navbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-4>
+                    <div class="herd" (click)="settings()" style="overflow: hidden;border-radius: 50%;width:3.5rem;height:3.5rem">
+                        <img class="content-imgs" src={{message.headImg}} alt="">
+                    </div>
+                </ion-col>
+                <ion-col col-4>
+                    <h4>{{title}}</h4>
+                </ion-col>
+                <ion-col col-4 *ngIf="show">
+                    <ion-icon name="cart" class='car' (click)="cart()"></ion-icon>
+                    <ion-icon name="chatbubbles" (click)="chatbubbles()"></ion-icon>
+                    <ion-icon name="settings" (click)="settings()"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar> -->
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+</ion-header>
+
+<ion-content class="report-center-wrap">
+    <!-- 下拉刷新 -->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <section>
+        <div *ngIf="role === 'DTC Head' || role === 'DTC Sales'">
+            <div class="report-nav">
+                <span [ngClass]="{'check':tab === 0}" (click)="changeDate(0)">月度数据</span>
+                <span [ngClass]="{'check':tab === 1}" (click)="changeDate(1)">年度数据</span>
+            </div>
+            <ion-grid class="report-center">
+                <ion-row>
+                    <ion-col col-4>
+                        <div class="report-content">
+                            <div>销售额</div>
+                            <div>{{salesData.orderMoney}}</div>
+                            <div>活动场次</div>
+                            <div>{{salesData.activityNum}}</div>
+                        </div>
+                    </ion-col>
+                    <ion-col col-4>
+                        <div class="report-content">
+                            <div>订单数</div>
+                            <div>{{salesData.orderNum}}</div>
+                            <div>参与活动客户</div>
+                            <div>{{salesData.activityCustomerNum}}</div>
+                        </div>
+                    </ion-col>
+                    <ion-col col-4>
+                        <div class="report-content">
+                            <div>购买客户</div>
+                            <div>{{salesData.buyCustomerNum}}</div>
+                            <div>新增客户数</div>
+                            <div>{{salesData.newCustomerNum}}</div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <div *ngIf="role === 'Training Team Head'">
+            <ion-grid class="report-center">
+                <ion-row>
+                    <ion-col col-6>
+                        <div class="report-content">
+                            <div>当月活动总数</div>
+                            <div>{{salesData.monthActivityNum}}</div>
+                        </div>
+                    </ion-col>
+                    <ion-col col-6>
+                        <div class="report-content">
+                            <div>当年活动总数</div>
+                            <div>{{salesData.yearActivityNum}}</div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </section>
+    <section [ngSwitch]="role">
+
+        <!--DTC Head  -->
+        <div *ngSwitchCase="'DTC Head'">
+            <div class="raking-line lefts" (click)="toSortList()">
+                <span class="left">客户排名</span>
+                <span class="right">
+                    <ion-icon name="ios-arrow-forward"></ion-icon>
+                </span>
+            </div>
+            <div class="money-line">
+                <span class="left" [ngClass]="{'col-show':saleTab === 0}" id="saleMoney" (click)="saleMoney()">销售金额</span>
+                <span class="right" id="otherMsg" [ngClass]="{'col-show':saleTab === 1}" (click)="otherMsg()">其他信息</span>
+            </div>
+            <ion-grid class="sale-wrap">
+                <ion-row class="sale-row">
+                    <ion-col col-4 class="sale">销售</ion-col>
+                    <ion-col col-2 class="other-msg" (click)="SortList('customerNum')" *ngIf="saleTab === 1">客户数</ion-col>
+                    <ion-col col-2 class="other-msg" (click)="SortList('buyCustomerNum')" *ngIf="saleTab === 1">下单客户</ion-col>
+                    <ion-col col-2 class="other-msg" (click)="SortList('orderNum')" *ngIf="saleTab === 1">订单数</ion-col>
+                    <ion-col col-2 class="other-msg" (click)="SortList('activityNum')" *ngIf="saleTab === 1">活动场次</ion-col>
+                    <ion-col class="sale-money" (click)="SortList('monthMoney')" *ngIf="saleTab === 0">当月销售额</ion-col>
+                    <ion-col class="sale-money" (click)="SortList('yearMoney')" *ngIf="saleTab === 0">年度销售额</ion-col>
+                </ion-row>
+            </ion-grid>
+            <div>
+                <ion-grid class="sale-person" *ngFor="let item of dataList" (click)="toSaleReport(item.saleId)">
+                    <ion-row align-items-center class="person-row">
+                        <ion-col col-4 class="sale-img">
+                                <img [src]="item.headPhoto" alt="" *ngIf="item.headPhoto" class="left">
+                                <img src="{{ avatar_img}}" alt="" *ngIf="!item.headPhoto" class="left">
+                            <div class="left">{{item.name}}</div>
+                        </ion-col>
+                        <ion-col class="other-msg" baseline *ngIf="saleTab === 1">{{item.customerNum}}</ion-col>
+                        <ion-col class="other-msg" center *ngIf="saleTab === 1">{{item.buyCustomerNum}}</ion-col>
+                        <ion-col class="other-msg" *ngIf="saleTab === 1">{{item.orderNum}}</ion-col>
+                        <ion-col class="other-msg" *ngIf="saleTab === 1">{{item.activityNum}}</ion-col>
+                        <ion-col class="sale-money" *ngIf="saleTab === 0">{{item.monthMoney}}</ion-col>
+                        <ion-col class="sale-money" *ngIf="saleTab === 0">{{item.yearMoney}}</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+
+        <!--DTC Sales  -->
+        <div *ngSwitchCase="'DTC Sales'" class="dtc-sales">
+            <div class="list-title">客户排名</div>
+            <ul class="list">
+                <li class="list-item" *ngFor="let item of dataList">
+                    <div class="sale-img">
+                        <img [src]="item.headPhoto" alt="" *ngIf="item.headPhoto" class="left">
+                        <img src="{{ avatar_img}}" alt="" *ngIf="!item.headPhoto" class="left">
+                    </div>
+                    <div class="customer-info">
+                        <span>{{item.name}}</span>
+                        <span>{{item.tel}}</span>
+                    </div>
+                    <div class="customer-money">
+                        <span>{{item.money}}</span>
+                        <span>{{item.saleName}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!--Training Team Head  -->
+        <div *ngSwitchCase="'Training Team Head'">
+            <ion-grid class="sale-wrap">
+                <ion-row class="sale-row">
+                    <ion-col col-4 class="sale">销售</ion-col>
+                    <ion-col>当月活动场次</ion-col>
+                    <ion-col>年度活动场次</ion-col>
+                </ion-row>
+            </ion-grid>
+            <div>
+                <ion-grid class="sale-person" *ngFor="let item of dataList">
+                    <ion-row align-items-center class="person-row">
+                        <ion-col col-4 class="sale-img">
+                                <img [src]="item.headPhoto" alt="" *ngIf="item.headPhoto" class="left">
+                                <img src="{{ avatar_img}}" alt="" *ngIf="!item.headPhoto" class="left">
+                            <div class="left">{{item.saleName}}</div>
+                        </ion-col>
+                        <ion-col>{{item.monthActivityNum}}</ion-col>
+                        <ion-col>{{item.yearActivityNum}}</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+
+    </section>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="loadMore">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载更多...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

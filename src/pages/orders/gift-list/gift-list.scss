@@ -1,0 +1,142 @@
+page-gift-list {
+    .product-list-top {
+        height: 4.6rem;
+        background: #346792;
+        .search {
+            position: relative;
+            float: left;
+            width: 90%;
+            height: 3.2rem;
+            padding-left: 1.5rem;
+            img {
+                position: absolute;
+                top: .7rem;
+                right: 4rem;
+                display: inline-block;
+                width: 1.8rem;
+                height: 1.8rem;
+                background: no-repeat center/contain;
+            }
+            input {
+                display: inline-block;
+                width: 90%;
+                height: 3.2rem;
+                padding-left: 1.5rem;
+                border: 0;
+                border-radius: 1.6rem;
+            }
+        }
+        .classify {
+            float: right;
+            width: 10%;
+            height: 3.2rem;
+            img {
+                display: inline-block;
+                width: 2.0rem;
+                height: 1.5rem;
+                background: no-repeat center/contain;
+            }
+            span {
+                display: inline-block;
+                width: 100%;
+                height: 1.4rem;
+                font-size: 1.2rem;
+                color: #fff;
+            }
+        }
+    }
+    ion-content {
+        .nofind {
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        ul {
+            width: 100%;
+            background: #f4f4f4;
+            overflow: hidden;
+            clear: both;
+            li {
+                display: inline-block;
+                background: #ffffff;
+                float: left;
+                width: 49%;
+                height: 24.0rem;
+                margin-bottom: 2%;
+                .showPictures {
+                    margin: .8rem auto;
+                    width: 90%;
+                    height: 14.0rem; // overflow: hidden;
+                    img {
+                        display: inline-block;
+                        width: 100%;
+                    }
+                }
+                .priductDesciption {
+                    padding-top: 1.0rem;
+                    padding-left: 1.5rem;
+                    height: 7.0rem;
+                    span {
+                        display: inline-block;
+                    }
+                    .over {
+                        width: 100%;
+                        box-sizing: border-box;
+                        padding-right: 1.5rem;
+                        overflow: hidden;
+                    }
+                    span:nth-child(1) {
+                        width: 5.0rem;
+                        height: 1.4rem;
+                        color: #F05050;
+                        font-size: 1.0rem;
+                        text-align: center;
+                        line-height: 1.4rem;
+                        border-radius: .7rem;
+                    }
+                    span:nth-child(2) {
+                        width: 100%;
+                        height: 1.8rem;
+                        color: #333;
+                        font-size: 1.3rem;
+                        font-weight: bold;
+                    }
+                    .priceBox {
+                        width: 100%;
+                        height: 1.4rem;
+                        span {
+                            position: relative;
+                            width: 80%;
+                            border: 0;
+                            color: #002020;
+                            font-size: 1.0rem;
+                            text-align: left;
+                            overflow: hidden;
+                            .price {
+                                position: absolute;
+                                top: 0;
+                                color: #F05050;
+                                .num {
+                                    color: #999;
+                                }
+                            }
+                        }
+                        img {
+                            float: right;
+                            margin-right: 1.0rem;
+                            width: 1.5rem;
+                            background: no-repeat center/contain;
+                        }
+                    }
+                }
+            }
+            li:nth-child(2n) {
+                float: right;
+                width: 49%;
+                margin-left: 2%;
+            }
+        }
+    }
+    input {
+        caret-color: #3D5991;
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "dtc",
+  "app_id": "1581e12f",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

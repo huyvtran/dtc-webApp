@@ -1,0 +1,58 @@
+<!--
+  Generated template for the ChoiceCustomerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()"
+        (chatbubblesClick)="chatbubbles()"></my-nav>
+
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <div class="list-header" (click)="ionFilter()">
+            <span>通过筛选条件选择:</span>
+            <div class="many">
+                <img src={{Jiantou_img}} alt="">
+            </div>
+        </div>
+
+        <ion-list-header class="list-header">
+        <ion-checkbox [(ngModel)]="allChecked"  color="#E97213" (click)="updateCucumber()"></ion-checkbox>
+            <ion-label>
+                <div class="mail-content">
+                    <p>全部客户</p>
+                </div>
+            </ion-label>
+        </ion-list-header>
+        <ion-list>
+            <div *ngFor="let item of listCustomer">
+                <div *ngIf="item.list!=''">
+                    <ion-list-header class="list-header">
+                        {{item.key}}
+                    </ion-list-header>
+
+                    <ion-item *ngFor="let i of item.list">
+                        <ion-checkbox [(ngModel)]="i.checked" color="#E97213" (click)="pushList()"></ion-checkbox>
+                        <ion-label>
+                            <img [src]="i.avatar" alt="" *ngIf="i.avatar" class="mail-img">
+                            <img src="{{avatar_img}}" alt="" *ngIf="!i.avatar" class="mail-img">
+                            <div class="mail-content">
+                                <p>{{i.username}}</p>
+                                <p>{{i.returnTel}}</p>
+                            </div>
+                        </ion-label>
+                    </ion-item>
+                </div>
+            </div>
+        </ion-list>
+
+
+    </ion-list>
+</ion-content>
+<ion-footer (click)="trues()">确定</ion-footer>

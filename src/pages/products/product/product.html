@@ -1,0 +1,30 @@
+<ion-header>
+    <!-- <ion-navbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-4>
+                    <div class="herd" (click)="settings()" style="overflow: hidden;border-radius: 50%;width:3.5rem;height:3.5rem">
+                        <img class="content-imgs" src={{message.headImg}} alt="">
+                    </div>
+                </ion-col>
+                <ion-col col-4>
+                    <h4>{{title}}</h4>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-icon name="cart" class='car' (click)="cart()"></ion-icon>
+                    <ion-icon name="chatbubbles" (click)="chatbubbles()"></ion-icon>
+                    <ion-icon name="settings" (click)="settings()"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar> -->
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+</ion-header>
+
+<ion-content>
+    <div class="product-box">
+        <div class="dl" *ngFor="let item of listData" [id]="item.id" (click)="ionCid(item.id)">
+            <img [src]="item.appStoreImage">
+        </div>
+    </div>
+</ion-content>

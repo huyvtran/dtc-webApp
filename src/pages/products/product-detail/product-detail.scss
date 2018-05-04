@@ -1,0 +1,78 @@
+page-product-detail {
+    .scroll-content {
+        padding: 0!important;
+        margin-bottom: 45px!important;
+    }
+    .products-box {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 16px;
+        clear: both;
+        ion-slides {
+            height: 375px;
+        }
+        .swiper-container {
+            height: 375px;
+        }
+        .roasting {
+            width: 100%;
+            height: 375px;
+            border-bottom: 1px solid #F4F4F4;
+        }
+        .mid {
+            overflow: hidden;
+            border-bottom: 1px solid #F4F4F4;
+            padding-left:1rem;
+            p {
+                padding-left: 15px;
+            }
+            .title {
+                font-size: 13px;
+                color: #333333;
+                letter-spacing: -0.31px;
+                font-weight: bold;
+                margin-top: 10px;
+            }
+            .last-line {
+                margin-top: 5px;
+                margin-bottom: 10px;
+                font-size: 10px;
+                color: #333333;
+                letter-spacing: -0.24px;
+                .price {
+                    color: #F05050;
+                }
+                .rest {
+                    color: #9E9E9E;
+                    .num {
+                        font-style: normal;
+                    }
+                }
+            }
+        }
+        .btm {
+            padding-top: 5px;
+            dt {
+                height: 20px;
+                line-height: 20px;
+                border-left: 5px solid #346792;
+                padding-left: 1.7rem;
+                font-size: 12px;
+                color: #333333;
+                font-weight: bold;
+                margin-bottom: 3px;
+            }
+            dd {
+                padding:0 1rem;
+                ul li {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    ion-footer {
+        z-index: 1;
+    }
+}

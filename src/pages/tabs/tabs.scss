@@ -1,0 +1,79 @@
+page-tabs {
+    .tab-button[aria-selected=true]{
+        color: #04334b !important;      
+    }
+    .tabs-md .tab-button-icon{
+        width:20px;
+        height:22px;
+    }
+    .tabs-ios .tab-button-icon{
+        width:20px;
+        height:22px;
+    }
+    // 客户 tab-button-icon icon icon-md ion-md-customer
+    //tab-button-icon icon icon-ios ion-ios-customer-outline
+    .ion-md-customer{
+        background:url('../assets/images/tabs/customer.png')no-repeat center/contain;
+    }
+    .ion-ios-customer-outline{
+        background:url('../assets/images/tabs/customer.png')no-repeat center/contain;
+    }
+    .ion-md-customer[ng-reflect-is-active = true]{
+        background:url('../assets/images/tabs/customer_select.png')no-repeat center/contain;
+    }
+    .ion-ios-customer[ng-reflect-is-active = true]{
+        background:url('../assets/images/tabs/customer_select.png')no-repeat center/contain;
+    }
+    //订单 tab-button-icon icon icon-md ion-md-order
+    .ion-md-order{
+        background:url('../assets/images/tabs/order.png')no-repeat center/contain;
+    }
+    .ion-ios-order-outline{
+        background:url('../assets/images/tabs/order.png')no-repeat center/contain;
+    }
+    .ion-md-order[ng-reflect-is-active = true]{
+        background:url('../assets/images/tabs/order_select.png')no-repeat center/contain;
+    }
+    .ion-ios-order[ng-reflect-is-active = true]{
+        background:url('../assets/images/tabs/order_select.png')no-repeat center/contain;
+    }
+    //产品 tab-button-icon icon icon-md ion-md-product
+    .ion-md-product{
+        background:url('../assets/images/tabs/product.png')no-repeat center/contain;
+    }
+    .ion-ios-product-outline{
+        background:url('../assets/images/tabs/product.png')no-repeat center/contain;
+    }
+    .ion-md-product[ng-reflect-is-active = true]{
+        background:url('../assets/images/tabs/product_select.png')no-repeat center/contain;
+    }
+    .ion-ios-product[ng-reflect-is-active = true]{
+        background:url('../assets/images/tabs/product_select.png')no-repeat center/contain;
+    }
+    //活动 tab-button-icon icon icon-md ion-md-active
+    .ion-md-active{
+        background:url('../assets/images/tabs/active.png')no-repeat center/contain;
+    }
+    .ion-ios-active-outline{
+        background:url('../assets/images/tabs/active.png')no-repeat center/contain;
+    }
+    .ion-md-active[ng-reflect-is-active = true]{
+        background:url('../assets/images/tabs/active_select.png')no-repeat center/contain;
+    }
+    .ion-ios-active[ng-reflect-is-active = true]{
+        background:url('../assets/images/tabs/active_select.png')no-repeat center/contain;
+    }
+    //报表 tab-button-icon icon icon-md ion-md-report
+    .ion-md-report{
+        background:url('../assets/images/tabs/report.png')no-repeat center/contain;
+    }
+    .ion-ios-report-outline{
+        background:url('../assets/images/tabs/report.png')no-repeat center/contain;
+    }
+    .ion-md-report[ng-reflect-is-active = true]{
+        background:url('../assets/images/tabs/report_select.png')no-repeat center/contain;
+    }
+    .ion-ios-report[ng-reflect-is-active = true]{
+        background:url('../assets/images/tabs/report_select.png')no-repeat center/contain;
+    }
+}

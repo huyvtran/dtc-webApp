@@ -1,0 +1,63 @@
+<!--
+  Generated template for the SiteInformationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>活动现场信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content classs="page">
+    <form>
+    <div class="cost-wrap">
+        <form action="">
+            <div class="title">实际活动费用确认</div>
+            <div class="form-item">
+                <div class="item-content">
+                    <label class="name">实际参与人数<input type="text" class="content"></label>
+                    <label class="name">实际人均花费<input type="text" class="content"></label>
+                </div>
+                <div>活动添加客户数  12</div>
+                <div class="form-item upload-form-item">
+                    <div><img src={{img}} alt="" *ngFor=""></div>
+                    <div class="upload-img " (click)="presentActionSheet()">
+                        <i>+</i>
+                        <img src="" alt="">
+                    </div>
+                    <div class="upload-text">点击添加活动现场照片</div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <ul>
+        <li class="writeoff-wrap">
+            <div>
+                <div class="title">
+                    <span>10012131</span>
+                </div>
+                <div class="title">
+                    <span>麦卡伦18年单一苏格兰</span>
+                </div>
+                <div class="form-item">
+                    <div class="item-content">
+                        <label class="name">申请数量:<input type="text" class="content" disabled value="1"></label>
+                        <label class="name">售卖:<input type="text" class="content" disabled value="1"></label>
+                    </div>
+                </div>
+                <div class="item-content input-wrap">
+                    <label class="name">饮用<input type="text" class="content2"></label>
+                    <label class="name">QC<input type="text" class="content2"></label>
+                    <label class="name">破损<input type="text" class="content2"></label>
+                </div>
+            </div>
+        </li>
+    </ul>
+    </form>
+    <div class="big-btn">提交</div>
+</ion-content>

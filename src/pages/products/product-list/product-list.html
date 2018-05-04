@@ -1,0 +1,48 @@
+<!--
+  Generated template for the ProductListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+        <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+
+    <div class="product-list-top">
+        <div class="search">           
+            <input type="search" [(ngModel)]="text" (change)="ionSearch()"> 
+            <img src={{search_img}} (click)="ionSearch()">
+        </div>
+        <div class="classify" (click)='toProductClassify()'>
+            <img src={{Fenlei_img}} alt="">
+            <span>分类</span>
+        </div>
+    </div>
+</ion-header>
+<ion-content>
+        <div class="nofind" *ngIf="showNOFind">无搜索结果</div>
+        <!-- 下拉刷新 -->
+        <ion-refresher (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="Refreshing...">
+            </ion-refresher-content>
+        </ion-refresher>
+    <ul>
+        <li  *ngFor="let item of merchandisetData" [id]="item.id">
+            <div (click)='toProductDetail(item)' class="showPictures">
+                <img [src]="item.productImage" alt="">
+            </div>
+            <div class="priductDesciption">
+                <span></span>
+                <span class="over">{{item.productSimplifyName}}</span>
+                <div class="priceBox" (click)="addShopping(item.id,item)">
+                    <span>直销价:<span class="price">￥{{item.productMemberPrice}}<i class="num">({{item.saleStock}}件库存)</i></span></span>
+                    <img src={{GouWuCar_img}} alt="">
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="loadMore">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载更多...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

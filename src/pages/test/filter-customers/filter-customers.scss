@@ -1,0 +1,56 @@
+page-filter-customers {
+    ion-content {
+        ion-list-header {
+            min-height: 3rem;
+        }
+        .list-header {
+            height: 3.0rem;
+            color: #88888D;
+            box-sizing: border-box;
+            padding-left: 1.7rem;
+            border-bottom: 1px solid #E8E8E8;
+            line-height: 3rem;
+            .many {
+                width: 1rem;
+                height: 100%;
+                float: right;
+                img {
+                    display: inline-block;
+                    width: 0.7rem;
+                    height: 0.9rem;
+                }
+            }
+        }
+        .checkbox-checked {
+            border-color: #E97213 !important;
+            background-color: #E97213 !important;
+        }
+        .list-ios>.item-block:first-child {
+            border-top: 0;
+        }
+        .list-ios>.item-block:last-child {
+            border-bottom: 0.5px solid #E8E8E8;
+        }
+        .list-ios>.item-block {
+            border-bottom: 0.5px solid #E8E8E8;
+            margin: 0 1.6rem;
+            padding: 0;
+        }
+        .list-ios .item-block .item-inner {
+            border: 0;
+        }
+        .item-block {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .mail-img {
+            width: 13.6%;
+            margin-top: .6rem;
+            float: left;
+        }
+        .mail-content {
+            display: inline-block;
+            margin: .6rem 0 0 .5rem;
+        }
+    }
+}

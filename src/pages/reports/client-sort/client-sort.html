@@ -1,0 +1,44 @@
+<!--
+  Generated template for the ClientSortPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+        <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+
+
+<ion-content class="report-center-wrap">
+    <!-- 下拉刷新 -->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="Refreshing...">
+            </ion-refresher-content>
+        </ion-refresher>
+    <div class="title">客户排名</div>
+    <ul class="list">
+        <li *ngFor="let item of dataList" (click)="toDetailsPage(item.memberId)">
+            <dl>
+                <dt>
+                    <img [src]="item.headPhoto" alt="" *ngIf="item.headPhoto">
+                    <img src="{{ avatar_img}}" alt="" *ngIf="!item.headPhoto">
+                </dt>
+                <dd>
+                    <div>
+                        <span>{{item.name}}</span>
+                        <span>{{item.tel}}</span>
+                    </div>
+                    <div>
+                        <span>{{item.money}}</span>
+                        <span>{{item.saleName}}</span>
+                    </div>
+                </dd>
+            </dl>
+        </li>
+    </ul>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="loadMore">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载更多...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,80 @@
+page-forget {
+    .login-logo {
+        margin-top: 80px;
+        width: 45%;
+        height: 45%;
+    }
+    .scroll-content {
+        text-align: center;
+        background-color: #002d49;
+        .button-ios.activated {
+            background-color: #f5f5f5;
+            opacity: 1;
+        }
+        .button-md.activated {
+            background-color: #f5f5f5;
+            opacity: 1;
+        }
+    }
+    .input {
+        position: relative;
+    }
+    .text-input {
+        border: 1px solid #fff;
+        border-radius: 17px;
+        width: 75%;
+        height: 40px;
+        padding-left: 12%;
+        font-size: 14px;
+        color: #fff;
+        margin-bottom: 14px;
+        caret-color: white;
+    }
+    .input-icon {
+        position: absolute;
+        height: 18px;
+        top: 34%;
+        left: 17%;
+    }
+    .input-icon1 {
+        position: absolute;
+        height: 18px;
+        top: 31%;
+        left: 17%;
+    }
+    .input-psd {
+        margin-top: 3px;
+    }
+    .cus-title {
+        text-align: center;
+        font-size: 13pt;
+        color: #fff;
+        margin-top: 50px;
+        margin-bottom: 16px;
+    }
+    .button-round {
+        height: 35px;
+        width: 75%;
+        background-color: #fff;
+        color: #002d49;
+        margin-top: 19px;
+        font-size: 16px;
+    }
+    .getyzm {
+        height: 33px;
+        position: absolute;
+        top: 20%;
+        right: 18%;
+        background-color: #002d49;
+        color: #fff;
+        font-size: 14px;
+        border-left: 1px solid #fff;
+        padding-left: 15px;
+    }
+    page-login .text-input {
+        caret-color: white;
+    }
+    ion-input {
+        caret-color: white;
+    }
+}

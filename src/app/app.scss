@@ -1,0 +1,264 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+// 公共样式
+* {
+    padding: 0;
+    margin: 0;
+}
+
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a,
+i,
+ul li,
+p,
+button,
+ion-footer {
+    font-family: PingFangSC-Regular;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix {
+    display: inline-block;
+    content: '';
+    height: 0;
+    clear: both;
+}
+
+
+/* 头部样式 */
+
+.bar-button::after {
+    width: 6.0rem;
+}
+
+.headSwitch {
+    display: none;
+}
+
+ion-navbar {
+    padding-top: 1.5rem;
+    position: relative !important;
+    .herd {
+        position: absolute;
+        margin-top: -1.9rem;
+        top: 50%;
+        width: 4.0rem;
+        height: 4.0rem;
+        left: .5rem;
+        z-index: 9999;
+    }
+    h4 {
+        letter-spacing: 1px;
+        position: absolute;
+        margin-top: -1.9rem;
+        top: 50%;
+        display: inline-block;
+        width: 100%;
+        height: 3.7rem;
+        line-height: 3.7rem;
+        text-align: center;
+        font-size: 1.7rem;
+    }
+    ion-col {
+        z-index: 0;
+    }
+    ion-icon {
+        margin-right: 1.5rem;
+        float: right;
+        font-size: 2.4rem;
+    }
+    .car {
+        margin-right: 0;
+    }
+}
+
+.toolbar-title-md {
+    display: inline-block;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #000;
+    pointer-events: auto;
+}
+
+.ion-ios-settings:before {
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.8rem;
+    content: '';
+    background: url('../assets/product/shezhi.png')no-repeat center/contain;
+    clear: both;
+}
+
+.ion-md-settings:before {
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.8rem;
+    content: '';
+    background: url('../assets/product/shezhi.png')no-repeat center/contain;
+    clear: both;
+}
+
+.ion-ios-chatbubbles:before {
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.8rem;
+    content: '';
+    background: url('../assets/product/xinxi.png')no-repeat center/contain;
+    clear: both;
+}
+
+.ion-md-chatbubbles:before {
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.8rem;
+    content: '';
+    background: url('../assets/product/xinxi.png')no-repeat center/contain;
+    clear: both;
+}
+
+.ion-ios-cart:before {
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.8rem;
+    content: '';
+    background: url('../assets/product/shop-car.png')no-repeat center/contain;
+    clear: both;
+}
+
+.ion-md-cart:before {
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.8rem;
+    content: '';
+    background: url('../assets/product/shop-car.png')no-repeat center/contain;
+    clear: both;
+}
+
+.toolbar-background {
+    background-color: #346792;
+}
+
+.toolbar-title {
+    color: white;
+    text-align: center
+}
+
+.navIcon {
+    color: white;
+    font-size: 2rem;
+    float: right;
+    margin-right: 1.5rem;
+}
+
+.tabs-md .tab-button-icon {
+    width: 3.5rem;
+    height: 3rem;
+}
+
+.back-button-icon-ios {
+    color: white;
+}
+
+.back-button {
+    color: white !important;
+}
+
+.back-button.show-back-button {
+    position: absolute;
+    z-index: 500;
+}
+
+.segment .segment-button:first-of-type {
+    border-radius: 0;
+}
+
+.segment .segment-button:last-of-type {
+    border-radius: 0;
+}
+
+.segment .segment-button {
+    background: white;
+    color: black;
+}
+
+.segment .segment-button.segment-activated {
+    color: #488AFF;
+    font-weight: bold;
+}
+
+.segment-ios .segment-button.segment-activated {
+    background: white;
+    border-bottom: .125rem solid #488AFF;
+}
+
+.segment-ios .segment-button {
+    border: 0;
+    height: 6.4rem;
+    line-height: 6.4rem;
+}
+
+.toolbar-content {
+    color: white;
+}
+
+i {
+    font-style: normal;
+}
+
+ion-footer {
+    width: 100%;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    background: #346792;
+    color: white;
+    font-size: 1.4rem;
+    text-align: center;
+    z-index: 0;
+}
+
+ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+.content-imgs {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.checkbox .checkbox-checked {
+    border-color: #E97213;
+    background-color: #E97213;
+}
+
+input[type="radio"] {
+    background: #E97213;
+}

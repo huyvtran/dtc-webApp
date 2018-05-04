@@ -1,0 +1,217 @@
+page-customer {
+    .back-button.show-back-button {
+        display: none;
+    }
+    .product-list-top {
+        height: 6rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: auto;
+        background-color: #346792;
+        .product-list-content {
+            width: 85%;
+            height: 3.2rem;
+            border-radius: 1.6rem;
+            background: white;
+            margin: auto;
+            display: flex;
+            margin-bottom: 1.5rem;
+            .search {
+                width: 1.8rem;
+                height: 1.8rem;
+                margin-top: .7rem;
+                margin-right: 1.5rem;
+            }
+            input {
+                display: inline-block;
+                width: 100%;
+                height: 3.2rem;
+                border: none;
+                color: #98B2C7;
+                border-radius: 6.25rem;
+                font-size: 1.4rem;
+                text-align: left;
+                padding-left: 1.5rem;
+            }
+        }
+    }
+    ion-content {
+        .navigation {
+            width: 100%;
+            display: flex;
+            box-sizing: border-box;
+            padding: 0.625rem 0.9375rem;
+            border-bottom: .0625rem solid #C9E3F7;
+            .setup-top {
+                width: 25%;
+                height: 100%;
+                .message {
+                    font-size: 1.3rem;
+                    color: #346792;
+                    text-align: center;
+                }
+                .setUp {
+                    width: 100%;
+                    text-align: center;
+                    img {
+                        display: inline-block;
+                        width: 3.0rem;
+                        height: 3.0rem;
+                    }
+                }
+            }
+        }
+        .rule {
+            width: 100%;
+            height: 3rem;
+            display: flex;
+            box-sizing: border-box;
+            .rule-left {
+                width: 50%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.2rem;
+                color: #687DA9;
+            }
+            .rule-right {
+                width: 50%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.2rem;
+                color: #AAAAAA;
+            }
+        }
+        .center-list {
+            width: 95%; // height: 70%;
+            height: 85%;
+            position: absolute;
+            overflow-y: scroll;
+            padding-bottom: 30px;
+            left: 0;
+            .sort {
+                display: inline-block;
+                width: 100%;
+                height: 3.0rem;
+                line-height: 3.0rem;
+                padding-left: 1.5rem;
+                color: #6D6D72;
+                font-size: 1.5rem;
+                background: #EFEFF4;
+            }
+            .list-header {
+                background: #EFEFF4;
+                color: #88888D;
+            }
+            .list-item {
+                width: 100%;
+                height: 7.0rem;
+                .label {
+                    display: inline-block;
+                    height: 7.0rem;
+                    margin: 0;
+                    .list-left {
+                        margin-top: 1rem;
+                        width: 5.0rem;
+                        height: 5.0rem;
+                        float: left;
+                    }
+                }
+                .list-content {
+                    width: 70%;
+                    height: 7.0rem;
+                    float: left;
+                    padding-top: 1.5rem;
+                    .list-content-name {
+                        height: 2rem;
+                        font-weight: bold;
+                        line-height: 2rem;
+                        font-size: 1.5rem;
+                        box-sizing: border-box;
+                        padding-left: 1rem;
+                        color: #3D5991;
+                    }
+                    .list-content-phone {
+                        height: 1.6rem;
+                        line-height: 1.6rem;
+                        font-size: 1.5rem;
+                        box-sizing: border-box;
+                        padding-left: 1rem;
+                        color: #90ABC2;
+                    }
+                }
+            }
+        }
+        .center-list2 {
+            .sort {
+                display: inline-block;
+                width: 100%;
+                height: 3.0rem;
+                line-height: 3.0rem;
+                padding-left: 1.5rem;
+                color: #6D6D72;
+                font-size: 1.5rem;
+                background: #EFEFF4;
+            }
+            .list-header {
+                background: #EFEFF4;
+                color: #88888D;
+            }
+            .list-item {
+                width: 100%;
+                height: 7.0rem;
+                .label {
+                    display: inline-block;
+                    height: 7.0rem;
+                    margin: 0;
+                    position: relative;
+                    .list-left {
+                        margin-top: 1rem;
+                        width: 5.0rem;
+                        height: 5.0rem;
+                        float: left;
+                    }
+                }
+                .list-content {
+                    width: 70%;
+                    height: 7.0rem;
+                    float: left;
+                    padding-top: 1.5rem;
+                    .list-content-name {
+                        height: 2rem;
+                        font-weight: bold;
+                        line-height: 2rem;
+                        font-size: 1.5rem;
+                        box-sizing: border-box;
+                        padding-left: 1rem;
+                        color: #3D5991;
+                    }
+                    .list-content-phone {
+                        height: 1.6rem;
+                        line-height: 1.6rem;
+                        font-size: 1.5rem;
+                        box-sizing: border-box;
+                        padding-left: 1rem;
+                        color: #90ABC2;
+                    }
+                }
+            }
+        }
+    }
+    input {
+        caret-color: #3D5991;
+    }
+    .pos>.scroll-content {
+        overflow: hidden !important;
+    }
+    .consume {
+        position: absolute;
+        right: 4%;
+        top: 1rem;
+        font-size: 1rem;
+    }
+}

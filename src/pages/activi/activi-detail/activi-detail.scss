@@ -1,0 +1,520 @@
+page-activi-detail {
+    // 物流信息
+    .mask {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: calc(100% - 72px);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        .content {
+            width: 100%;
+            height: 49%;
+            background: white;
+            position: absolute;
+            bottom: 0;
+            padding-right: 5px;
+            .payment {
+                .right {
+                    padding-right: 10px; // input {
+                    //     display: inline-block;
+                    //     width: 1.5rem;
+                    //     height: 1.5rem;
+                    // }
+                    input {
+                        margin: 0;
+                        padding: 0;
+                        border: 0;
+                    }
+                    input[type="radio"] {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        background: #E97213;
+                        opacity: 1;
+                    }
+                    label {
+                        position: absolute;
+                        left: 5px;
+                        top: 3px;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        border: 1px solid #999;
+                    }
+                }
+                .left {
+                    padding-right: 10px;
+                }
+            }
+        }
+        .button {
+            width: 100%;
+            height: 4.5rem;
+            background: #3D6E97;
+            border-radius: 0;
+            position: absolute;
+            bottom: -3rem;
+            text-align: center;
+            color: white;
+            line-height: 4.5rem;
+            font-size: 15px;
+        }
+    }
+    .logistics {
+        height: 50px;
+        border-bottom: 1px solid #F4F4F4;
+        dl {
+            height: 100%;
+            display: flex;
+            dt {
+                display: flex;
+                align-items: center;
+                padding-left: 15px;
+                padding-right: 15px;
+                img {
+                    width: 50px;
+                    height: 50px;
+                    background: #FFFFFF;
+                    border: 1px solid #CBCBCB;
+                }
+            }
+            dd {
+                flex: 1;
+                padding-right: 15px;
+                padding-left: 15px;
+                padding-top: 20px;
+                .line1 {
+                    height: 20px;
+                    margin-bottom: 5px;
+                    display: flex;
+                    justify-content: space-between;
+                    div {
+                        display: flex;
+                    }
+                    .left {
+                        font-family: PingFangSC-Regular;
+                        font-size: 12px;
+                        color: #666666;
+                        line-height: 20px;
+                        .time {
+                            margin-left: 15px;
+                        }
+                    }
+                    .right {
+                        padding-right: 10px;
+                        .state {
+                            font-family: PingFangSC-Regular;
+                            font-size: 12px;
+                            color: #092C74;
+                            line-height: 20px;
+                        }
+                        img {
+                            width: 16px;
+                            height: 13px;
+                            margin-top: 4px;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+                .logistics-latest {
+                    font-family: PingFangSC-Regular;
+                    font-size: 12px;
+                    color: #999999;
+                    line-height: 20px;
+                }
+            }
+        }
+    } //收货信息
+    .receiving {
+        height: 80px;
+        display: flex;
+        padding-top: 12px;
+        padding-left: 15px;
+        border-bottom: 1px solid #F4F4F4;
+        img {
+            width: 16px;
+            height: 20px;
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+        div {
+            flex: 1;
+            padding-right: 25px;
+            p {
+                font-family: PingFangSC-Regular;
+                font-size: 12px;
+                color: #666666;
+                letter-spacing: 0.2px;
+            }
+            .line1 {
+                line-height: 20px;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5px;
+                .t {
+                    margin-top: 0.1rem;
+                    margin-right: -1rem;
+                    font-size: 2rem;
+                }
+            }
+            .line2 {
+                line-height: 16px;
+            }
+        }
+    } //下单信息
+    .order {
+        height: 80px;
+        padding-left: 15px;
+        padding-top: 10px;
+        padding-right: 13px;
+        p {
+            display: flex;
+            justify-content: space-between;
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #333333;
+            line-height: 20px;
+        }
+    } //商品信息
+    .orders {
+        height: 30px;
+        margin-bottom: 0.5rem;
+        p {
+            color: #4F7BA0;
+            font-size: 13px;
+        }
+    }
+    .product {
+        border-bottom: 1px solid #F4F4F4;
+        ul {
+            li {
+                width: 100%;
+                height: 100px;
+                border-top: 1px solid #FFF;
+                background-color: #F4F4F4;
+                dl {
+                    height: 100%;
+                    display: flex; // transform: translateY(-17px);
+                    dt {
+                        display: flex;
+                        align-items: center;
+                        padding-left: 15px;
+                        padding-right: 10px;
+                        img {
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+                    dd {
+                        flex: 1;
+                        padding-right: 15px;
+                        padding-top: 10px;
+                        p {
+                            display: flex;
+                            justify-content: space-between;
+                            font-family: PingFangSC-Regular;
+                            font-size: 12px;
+                            color: #333333;
+                            line-height: 17px;
+                            .price {
+                                display:inline-block;
+                                width:5rem;
+                                text-align: right;
+                                color: #E64340;
+                            }
+                            .model {
+                                color: #3F3F3F;
+                            }
+                            .num {
+                                color: #AAAAAA;
+                            }
+                            .num-t {
+                                text-decoration: line-through;
+                            }
+                            span {
+                                display: inline-block;
+                                height: 1.5rem;
+                                overflow: hidden;
+                            }
+                        }
+                        .num-box {
+                            display: flex;
+                            height: 20px;
+                            position: absolute;
+                            z-index: 999999;
+                            width: 65%;
+                            box-sizing: border-box;
+                            padding-left: 44%;
+                            .reduce {
+                                font-family: Ionicons;
+                                font-size: 18px;
+                                color: #999999;
+                            }
+                            .num {
+                                font-size: 15px;
+                                margin-left: 8px;
+                                margin-right: 8px;
+                                width: auto;
+                                text-align: center;
+                            }
+                            .add {
+                                font-family: Ionicons;
+                                font-size: 18px;
+                                color: #E64340;
+                            }
+                        }
+                    }
+                }
+            }
+            li:first-child {
+                border-top: none;
+            }
+        }
+        .product-count {
+            height: 60px;
+            line-height: 30px;
+            font-size: 12px;
+            color: #333333;
+            text-align: right;
+            padding-right: 15px;
+            .num-h {
+                color: #AAAAAA;
+                text-decoration: line-through;
+            }
+            .discount {
+                color: #E64340;
+            }
+            .discounts {
+                display: inline-block;
+                width: 7rem;
+                height: 3rem;
+                line-height: 2rem;
+                text-align: left;
+                margin-top: 0.2rem;
+                border-radius: 0;
+                border: 1px solid #ddd;
+            }
+        }
+    } //礼品信息
+    .gift {
+        .line1 {
+            display: flex;
+            justify-content: space-between;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-family: PingFang-SC-Medium;
+            font-size: 13px;
+            border-bottom: 1px solid #F4F4F4;
+            .gift-msg {
+                color: #333333;
+            }
+            .edit {
+                color: #4F7BA0;
+            }
+        }
+        .add-gift {
+            height: 40px;
+            line-height: 40px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-family: PingFang-SC-Medium;
+            font-size: 13px;
+            border-bottom: 1px solid #F4F4F4;
+            color: #333;
+            .add-icon {
+                font-size: 18px;
+                color: #E97213;
+                margin-right: 5px;
+            }
+        }
+        ul {
+            li {
+                width: 100%;
+                height: auto;
+                border-top: 1px solid #FFF;
+                background-color: #F4F4F4;
+                border-bottom: 1px solid white;
+                dl {
+                    height: auto;
+                    display: flex;
+                    box-sizing: border-box;
+                    padding: 0.5rem;
+                    dt {
+                        display: flex;
+                        align-items: center;
+                        padding-left: 15px;
+                        padding-right: 10px;
+                        img {
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+                    dd {
+                        flex: 1;
+                        padding-right: 15px;
+                        .num-box {
+                            display: flex;
+                            height: 20px;
+                            position: absolute;
+                            z-index: 999999;
+                            width: 65%;
+                            box-sizing: border-box;
+                            padding-left: 44%;
+                            margin-top: 2rem;
+                            .reduce {
+                                font-family: Ionicons;
+                                font-size: 18px;
+                                color: #999999;
+                            }
+                            .num {
+                                font-size: 15px;
+                                margin-left: 8px;
+                                margin-right: 8px;
+                                width: 1.5rem;
+                                text-align: center;
+                            }
+                            .add {
+                                font-family: Ionicons;
+                                font-size: 18px;
+                                color: #E64340;
+                            }
+                        }
+                        p {
+                            display: flex;
+                            justify-content: space-between;
+                            font-family: PingFangSC-Regular;
+                            font-size: 12px;
+                            color: #333333;
+                            line-height: 17px;
+                            .price {
+                                color: #E64340;
+                            }
+                            .model {
+                                color: #3F3F3F;
+                            }
+                            .num {
+                                color: #AAAAAA;
+                            }
+                            span {
+                                display: inline-block;
+                                height: 1.8rem;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+                }
+            }
+            li:first-child {
+                border-top: none;
+            }
+        }
+    } //备注信息
+    .note {
+        min-height: 70px;
+        padding: 10px 15px;
+        font-family: PingFangSC-Regular;
+        font-size: 12px;
+        color: #333333;
+        letter-spacing: -0.29px;
+        border-bottom: 1px solid #F4F4F4;
+        .content {
+            width: 100%;
+            min-height: 3rem;
+            color: #999;
+            outline: none;
+            border: 0;
+        }
+    } //发票信息
+    .invoice {
+        padding: 10px 29px 13px 15px;
+        border-bottom: 1px solid #F4F4F4;
+        font-size: 1.4rem;
+        p {
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #999999;
+            line-height: 20px;
+        }
+        .g {
+            float: right;
+            margin-right: -1.2rem;
+            font-size: 2.1rem;
+            color: #999999;
+        }
+        .inv {
+            font-size: 13px;
+            color: #333333;
+        }
+    } //付款
+    .payment {
+        height: 45px;
+        padding-left: 15px; // padding-right: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #F4F4F4;
+        padding-right: 15px;
+        span {
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            .gt {
+                font-size: 20px;
+            }
+        }
+        .item {
+            font-size: 12px;
+        }
+        .item-block {
+            min-height: 2rem;
+            .item-inner {
+                border-bottom: 0;
+                padding-right: 0;
+            }
+        }
+        ion-select {
+            width: auto;
+            max-width: 100%;
+            padding-right: 4px;
+            text-align: right;
+            color: #999;
+        }
+        .left {
+            display: flex;
+            align-items: center;
+            img {
+                display: block;
+                width: 20px;
+                height: 20px;
+            }
+            span {
+                color: #333333;
+                margin-left: 10px;
+            }
+        }
+        .right {
+            color: #999;
+        }
+    }
+    .lefts {
+        padding-left: 5px;
+    }
+    .button {
+        width: 100px;
+        height: 25px;
+        background: #3D6E97;
+        border-radius: 100px;
+        color: white;
+        font-size: 11px;
+        text-align: center;
+        line-height: 25px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 30px auto;
+    }
+}

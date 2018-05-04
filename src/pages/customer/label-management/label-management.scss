@@ -1,0 +1,72 @@
+page-label-management {
+    ion-content {
+        .payment {
+            height: 4.0rem;
+            padding-left: .5rem;
+            padding-right: .5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #F4F4F4;
+            .left {
+                display: flex;
+                align-items: center;
+                img {
+                    display: block;
+                    width: 2.0rem;
+                    height: 2.0rem;
+                }
+                span {
+                    color: #333333;
+                    margin-left: 1.0rem;
+                }
+            }
+        }
+        ion-icon {
+            margin-right: 1.8rem;
+        }
+    }
+    button {
+        display: flex;
+        width: 3rem;
+        color: white;
+        background: red;
+        text-align: center;
+    }
+    .button {
+        display: flex;
+        text-align: center;
+        width: 6.5rem;
+        justify-content: center;
+    }
+    .item-inner {
+        padding: 0;
+    }
+    .label-ios {
+        margin: 0;
+    }
+    .con {
+        display: inline-block;
+        width: 90%;
+        height: 5.5rem;
+        float: left;
+        padding-left: .5rem;
+        padding-top: .8rem;
+        .p {
+            color: #1E3E80;
+            font-weight: bold;
+        }
+        .p1 {
+            display: inline-block;
+            width: 100%;
+            height: 1.5rem;
+            font-size: 1.2rem;
+            color: #919191;
+            margin-top: 0.7rem;
+            overflow: hidden;
+            span {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+<!--
+  Generated template for the PaymentVoucherPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+        <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+
+</ion-header>
+
+
+<ion-content>
+    <p class="text" (click)="presentActionSheet()">上传付款凭证</p>
+    <div class="click-icons" *ngFor="let item of urlList">
+        <div class="delete" (click)="delete(item)"> + </div>
+        <img  src="{{item}}" alt="">
+    </div>
+    <div class="click-icon" (click)="presentActionSheet()">
+        <ion-icon name="add"></ion-icon>
+    </div>
+</ion-content>
+
+<ion-footer (click)="submitImg()">
+   上传
+</ion-footer>
+

@@ -1,0 +1,65 @@
+<!--
+  Generated template for the GiftListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <my-nav [title]="title" [showHead]="showUserImg" [showMenu]="showMenu" (cartClick)="cart()" (settingsClick)="settings()" (chatbubblesClick)="chatbubbles()"></my-nav>
+
+  <div class="product-list-top">
+    <div class="search">
+      <input type="search" [(ngModel)]="text" (change)="ionSearch()">
+      <img src={{search_img}} (click)="ionSearch()">
+    </div>
+  </div>
+</ion-header>
+
+
+<ion-content>
+  <div class="nofind" *ngIf="showNOFind">无搜索结果</div>
+  <div class="ul">
+    <div class="nul" *ngFor="let i of merchandisetData">
+      <div class="li" *ngFor="let item of i.eventMaterialList">
+        <div [id]="item.id">
+          <div class="showPictures">
+            <img [src]="i.productImage" alt="">
+          </div>
+          <div class="priductDesciption">
+            <span class="price">{{i.productSimplifyName}}</span>
+            <span class="price">{{item.materialId}}</span>
+            <div class="priceBox" (click)="addGift(item,i)">
+              <i class="num">(剩余{{item.saleStock}})</i>
+              <img src={{GouWuCar_img}} alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<!-- <ion-content>
+  <div class="nofind" *ngIf="showNOFind">无搜索结果</div>
+  <ul>
+    <li *ngFor="let item of merchandisetData" [id]="item.id">
+      <div (click)='toProductDetail(item)' class="showPictures">
+        <img [src]="item.productImage" alt="">
+      </div>
+      <div class="priductDesciption">
+        <span></span>
+        <span class="over">{{item.productSimplifyName}}</span>
+        <div class="priceBox" (click)="addGift(item)">
+          <span>直销价:
+            <span class="price">￥{{item.productMemberPrice}}
+              <i class="num">({{item.publicStoreStock}}件库存)</i>
+            </span>
+          </span>
+          <img src={{GouWuCar_img}} alt="">
+        </div>
+      </div>
+    </li>
+  </ul>
+</ion-content> -->
+<ion-footer (click)="save()">保存</ion-footer>

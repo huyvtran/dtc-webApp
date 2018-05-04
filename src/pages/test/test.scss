@@ -1,0 +1,234 @@
+    page-test {
+        .date-picker {
+            width: 100%;
+            clear: both;
+            .col {
+                padding: 0;
+                .date-picker button[icon-only] {
+                    background: white !important;
+                }
+            }
+            .calendar-week-day {
+                color: #34485E;
+            }
+            .selected {
+                background: #FA9D3B !important;
+                color:white !important;
+            }
+            .selected.unselected {
+                background: none !important;
+            }
+            .selectedMonthLabel {
+                display: inline-block;
+                padding-left: 2.6rem;
+                width: 100%;
+                height: 4.0rem;
+                line-height: 4.0rem;
+                text-align: left;
+                color: #6B7897;
+                font-size: 1.5rem;
+            }
+            button[icon-only] {
+                display: inline-block;
+                border-radius: 1.1rem;
+                margin: 0;
+            }
+            .button-clear-ios {
+                color: rgb(139, 132, 132);
+            }
+            .button-clear-md {
+                color: #8b8484;
+            }
+            .button-outline-md {
+                border-color: white;
+                color: rgb(139, 132, 132);
+            }
+            /* 安卓 */
+            /* 左边的箭头 */
+            .ion-md-arrow-back:before {
+                margin-left: .6rem;
+                width: 2.2rem;
+                height: 2.2rem;
+                line-height: 2.2rem;
+                text-align: center;
+                font-size: 2.0rem;
+                background: #F7F8FC;
+                border-radius: 11rem;
+                content: "\f3cf";
+            }
+            .ion-md-arrow-forward:before {
+                width: 2.2rem;
+                height: 2.2rem;
+                line-height: 2.2rem;
+                text-align: center;
+                font-size: 2.0rem;
+                background: #F7F8FC;
+                border-radius: 1.1rem;
+                content: "\f3d1";
+            }
+            /* 苹果 */
+            .ion-ios-arrow-back:before {
+                margin-left: .6rem;
+                width: 2.2rem;
+                height: 2.2rem;
+                line-height: 2.2rem;
+                text-align: center;
+                font-size: 2.0rem;
+                background: #F7F8FC;
+                border-radius: 1.1rem;
+            }
+            .ion-ios-arrow-forward:before {
+                width: 2.2rem;
+                height: 2.2rem;
+                line-height: 2.2rem;
+                text-align: center;
+                font-size: 2.0rem;
+                background: #F7F8FC;
+                border-radius: 1.1rem;
+            }
+            .button-md {
+                width: 4.0rem;
+                height: 4.0rem !important;
+                border-radius: 2.0rem;
+            }
+            .button-ios {
+                width: 4.0rem;
+                height: 4.0rem !important;
+                border-radius: 2.0rem;
+            }
+        }
+        .btn {
+            position: absolute;
+        } // .re{
+        //     width:100%;
+        //     height:200px;
+        //     background: white;
+        //     position: fixed;
+        //     bottom:0;
+        //     z-index: 99999;
+        //     input{
+        //        display: inline-block;
+        //        width:50%;
+        //        height:80%;
+        //     }
+        //     .button{
+        //         display: inline-block;
+        //         width:100%;
+        //         height:20%;
+        //         background: blue;
+        //         color:white;
+        //     }
+        //  }
+        // }
+        .er {
+            display: inline-block !important;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #b9b9b95e;
+            overflow: hidden;
+            z-index: 999;
+            .kong {
+                display: inline-block;
+                width: 100%;
+                min-height: 10%;
+                height: 50%;
+            }
+            #height {
+                width: 100%;
+                height: 25rem;
+                background: #ffffff;
+                position: absolute;
+                bottom: 0;
+                text-align: center;
+                textarea {
+                    display: inline-block;
+                    margin: 1rem;
+                    resize: none;
+                    width: 90%;
+                    height: 18rem;
+                }
+                textarea::-webkit-input-placeholder {
+                    text-align: center;
+                    color: #999;
+                    line-height: 18.0rem;
+                }
+                .button {
+                    width: 100%;
+                    height: 5rem;
+                    background: #346792;
+                    line-height: 5rem;
+                    text-align: center;
+                    color: white;
+                    font-size: 1.4rem;
+                }
+            }
+        } //hadong
+        ion-content {
+            overflow: hidden;
+            .item-wrapper {
+                margin-bottom: 1.0rem;
+                .item-block {
+                    border-bottom: 0 !important;
+                }
+                ion-item-options {
+                    border-bottom: 0 !important;
+                }
+                .item-inner {
+                    padding-right: 0 !important;
+                    border-bottom: 0 !important;
+                    .label {
+                        margin: 0;
+                        margin-bottom: .5rem;
+                        span {
+                            display: inline-block;
+                            float: left;
+                            font-size: 1.2rem;
+                            width: 85%;
+                            text-align: left;
+                            margin-bottom: .5rem;
+                        }
+                        div {
+                            position: absolute;
+                            top: 0;
+                            right: .5rem;
+                            width: 15%;
+                            height: 4.8rem;
+                            font-size: 1.2rem;
+                            text-align: center;
+                            em {
+                                display: inline-block;
+                                width: 100%;
+                                height: 2.1rem;
+                                img {
+                                    display: inline-block;
+                                    height: 2.1rem;
+                                    background: no-repeat center/contain;
+                                }
+                            }
+                            i {
+                                position: absolute;
+                                left: 0;
+                                bottom: .5rem;
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+                button {
+                    display: inline-block;
+                    width: 6.5rem;
+                    color: white;
+                    font-size: 1.6rem;
+                    background: red;
+                }
+                .borderColor {
+                    border: 1px solid red;
+                }
+            }
+        }
+        .footer {
+            display: none;
+        }
+    }

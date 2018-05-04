@@ -1,0 +1,146 @@
+page-details {
+    ion-content {
+        .list-ios {
+            margin: 0;
+        }
+        // .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block
+        .list-item {
+            border: 0 !important;
+            .list-left {
+                width: 5.5rem;
+                height: 5.5rem;
+                float: left;
+                img {
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .list-content {
+                width: 70%;
+                height: 5.5rem;
+                float: left;
+                padding-top: .3rem;
+                .list-content-name {
+                    width: 100%;
+                    height: 50%;
+                    font-size: 1.5rem;
+                    box-sizing: border-box;
+                    padding: 0.32rem 0 .32rem 1.6rem;
+                    color: #092C74;
+                }
+                .list-content-phone {
+                    width: 100%;
+                    height: 50%;
+                    font: size 1.5rem;
+                    padding: 0.32rem 0 .32rem 1.6rem;
+                    color: #346792;
+                }
+            }
+            .edit {
+                float: right;
+                color: #092C74;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+        }
+        .information {
+            clear: both;
+            overflow: hidden;
+            margin-top:1rem;
+            img {
+                width: 1.8rem;
+                height: 1.8rem;
+                margin-right: .3rem;
+                margin-left: 2.0rem;
+                vertical-align: text-bottom;
+            }
+            .title-main {
+                width: 100%;
+                height: 1.8rem;
+                line-height: 1.8rem;
+                color: #333;
+                font-size: 1.5rem;
+            }
+            ul {
+                margin-left: 4.0rem;
+                margin-top: 0.6rem;
+                li {
+                    list-style: none;
+                    float: left;
+                    width: 100%;
+                    min-height: 2.8rem;
+                    clear: both;
+                    .list span {
+                        color: #2A2A2A;
+                        font-size: 1.4rem;
+                    }
+                    .list span:nth-child(1) {
+                        color: #333333;
+                    }
+                    .list span:nth-child(2) {
+                        color: #666666;
+                    }
+                    .list .list-a {
+                        color: #092C74;
+                        text-decoration: underline;
+                    }
+                    .list-appraise span {
+                        font-size: 1.4rem;
+                    }
+                    .list-appraise .appraise {
+                        display: inline-block;
+                        color: #2A2A2A;
+                        min-width: auto;
+                        text-align: center;
+                        font-size: 1.4rem;
+                        background: #DFF2FC;
+                        border-radius: 1rem;
+                        margin-left: .5rem;
+                        margin-right: .5rem;
+                        margin-bottom:0.5rem;
+                        box-sizing: border-box;
+                        padding: 0.3rem 1.6rem;
+                    }
+                }
+            }
+        }
+        ion-grid {
+            margin-top: 1.8rem;
+            ion-col {
+                span {
+                    display: inline-block;
+                    width: 100%;
+                    height: 1.0625rem;
+                    color: #333;
+                    line-height: 1.7rem;
+                    text-align: center;
+                    font-size: 1.3rem;
+                }
+                span:nth-child(2) {
+                    color: #092C74;
+                }
+            }
+        }
+        ion-list {
+            .item-ios {
+                font-size: 1.5rem;
+            }
+            .label {
+                font-weight: bold;
+                font-size: 1.5rem;
+                color: #030303;
+                line-height: 3rem;
+            }
+            .item-ios {
+                font-size: 1.5rem;
+            }
+            img {
+                width: 2.0rem;
+                margin-right: 2.0rem;
+                background: no-repeat center/contain;
+                vertical-align: text-bottom;
+            }
+        }
+    }
+}
